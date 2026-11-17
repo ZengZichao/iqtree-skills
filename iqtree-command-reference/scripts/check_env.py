@@ -237,6 +237,7 @@ def main(argv=None):
     mem_kb = read_memtotal_kb()
 
     print("== IQ-TREE environment ==")
+    banner = ""
     if path:
         banner, used = run_version(path, ns.timeout)
         first = banner.splitlines()[0].strip() if banner else "(no banner captured)"
@@ -256,9 +257,6 @@ def main(argv=None):
     print("cpu cores   : %d%s" % (ncpu, (" | %s" % model) if model else ""))
     print("total RAM   : %s" % format_ram(mem_kb))
 
-    banner = ""
-    if path:
-        banner, _ = run_version(path, ns.timeout)
     print("-- recommended flags --")
     for flag, value, why in recommend(ncpu, mem_kb, banner):
         print("  %-8s %-6s # %s" % (flag, value, why))

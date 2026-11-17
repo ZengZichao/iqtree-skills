@@ -215,7 +215,7 @@ def check_partition_ranges(path, n_sites):
                 errs.append("partition %s: range %s lies outside the alignment "
                             "(%d sites)" % (name, raw, n_sites))
             if step < 1:
-                errs.append("partition %s: \step must be >= 1 in %s" % (name, raw))
+                errs.append("partition %s: \\step must be >= 1 in %s" % (name, raw))
     return errs
 
 
@@ -256,10 +256,11 @@ def build(ns):
             warns.append("could not recognise the format of %s; docs support PHYLIP, FASTA, "
                          "NEXUS, CLUSTAL and MSF (Tutorial.md). Force the datatype with -st if "
                          "IQ-TREE mis-detects it" % aln)
-        elif ns.seqtype and detail == "unknown":
+        elif ns.seqtype:
             warns.append("-st is only needed when IQ-TREE mis-detects the sequence type "
                          "(command-reference.md)")
-    elif not ns.partition and not ns.fix_tree and not ns.user_tree:
+    elif not (ns.partition or ns.partition_equal or ns.partition_unlinked) \
+            and not ns.fix_tree and not ns.user_tree:
         errs.append("no input given: IQ-TREE needs an alignment (-s) or a partition file "
                     "(-q/-p/-Q; version 1.x: -spp/-sp)")
 
@@ -416,7 +417,16 @@ def build(ns):
     elif ns.bootstrap_nni:
         errs.append("-bnni requires the ultrafast bootstrap option (%s)" % flag("bootstrap"))
     if ns.alrt is not None:
-        parts.extend(["-alrt", str(int(ns.alrt))])
+        try:
+            a = int(ns.alrt)
+        except (TypeError, ValueError):
+            errs.append("-alrt replicates must be an integer, got %r" % ns.alrt)
+        else:
+            if a != 0 and a < 1000:
+                warns.append("-alrt %d < 1000; the docs specify >=1000 replicates "
+                             "(0 switches to the parametric aLRT) "
+                             "(command-reference.md 'Single branch tests')" % a)
+            parts.extend(["-alrt", str(a)])
 
     # misc ----------------------------------------------------------------------
     if ns.site_rates:
@@ -429,9 +439,15 @@ def build(ns):
     if ns.asr:
         parts.append("-asr")
     if ns.stop_iter is not None:
-        parts.extend(["-n", str(ns.stop_iter)])
+        if not re.match(r"^-?\d+$", str(ns.stop_iter)):
+            errs.append("-n must be an integer, got %r" % ns.stop_iter)
+        else:
+            parts.extend(["-n", str(ns.stop_iter)])
     if ns.nstop is not None:
-        parts.extend(["-nstop", str(ns.nstop)])
+        if not re.match(r"^-?\d+$", str(ns.nstop)):
+            errs.append("-nstop must be an integer, got %r" % ns.nstop)
+        else:
+            parts.extend(["-nstop", str(ns.nstop)])
     if ns.pers is not None:
         try:
             p = float(ns.pers)
@@ -552,7 +568,28 @@ def self_test():
     assert e, e
     _, _, e = build(parse([]))
     assert e, e
-    print("  rejects bad threads/mem/pers/seqtype/-t+-te/bare -bnni/no input: OK")
+    try:
+        _, _, e = build(parse(["--alignment", aln, "--alrt", "abc"]))
+    except SystemExit:
+        raise AssertionError("--alrt abc must produce a clean ERROR, not an argparse crash")
+    except ValueError:
+        raise AssertionError("--alrt abc must be rejected cleanly, not crash with a traceback")
+    assert e, "--alrt abc must be reported as an error"
+    _, _, e = build(parse(["--alignment", aln, "--stop-iter", "xyz"]))
+    assert e, e
+    _, _, e = build(parse(["--alignment", aln, "--nstop", "xyz"]))
+    assert e, e
+    print("  rejects bad threads/mem/pers/seqtype/-t+-te/bare -bnni/no input/alrt/n/nstop: OK")
+
+    # partition file alone is valid input (Advanced-Tutorial.md: iqtree -p example.nex)
+    cmd, w, e = build(parse(["--partition", nex]))
+    assert not e, e
+    assert "-p %s" % nex in quote(cmd), cmd
+
+    # -T short alias matches the SKILL.md example
+    cmd, w, e = build(parse(["--alignment", aln, "-T", "4"]))
+    assert not e, e
+    assert "-T 4" in quote(cmd), cmd
 
     # warnings
     _, w, _ = build(parse(["--alignment", aln, "--bootstrap", "100"]))
@@ -585,7 +622,7 @@ def make_parser():
     ap.add_argument("--alignment", "-a", help="input alignment (-s): PHYLIP/FASTA/NEXUS/CLUSTAL/MSF")
     ap.add_argument("--model", "-m", help="model string, e.g. GTR+I+G, LG+F+G, MFP, TESTMERGEONLY")
     ap.add_argument("--seqtype", help="DNA|AA|BIN|MORPH|CODON|NT2AA (only when auto-detection fails)")
-    ap.add_argument("--threads", help="'%s' CPU cores or AUTO" % "-T/-nt")
+    ap.add_argument("--threads", "-T", help="'%s' CPU cores or AUTO" % "-T/-nt")
     ap.add_argument("--threads-max", dest="threads_max", help="-ntmax cap for AUTO")
     ap.add_argument("--memory", help="-mem RAM cap, e.g. 8G")
     ap.add_argument("--prefix", help="output prefix (--prefix / -pre)")

@@ -270,8 +270,8 @@ def run(prefix, list_files=False, verbose=False):
              if os.path.exists(prefix + suf)]
     print("== IQ-TREE results: %s ==" % prefix)
     if not found:
-        cand = glob.glob(os.path.dirname(prefix + ".*") + "/" +
-                         os.path.basename(prefix) + "*")
+        base = os.path.dirname(prefix) or "."
+        cand = glob.glob(os.path.join(base, os.path.basename(prefix) + "*"))
         print("NO OUTPUT FILES FOUND for prefix '%s'" % prefix)
         if cand:
             print("did you mean one of:")
