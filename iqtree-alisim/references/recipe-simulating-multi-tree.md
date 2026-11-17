@@ -12,7 +12,7 @@ _Last update: Apr 3, 2025, Contributors: Minh Bui_
 
 There is now a much simpler way. Please read:
 
-[Topology-unlinked partition model](../AliSim.md#topology-unlinked-partition-model)
+[Topology-unlinked partition model](alisim.md#topology-unlinked-partition-model)
 
 This recipe explains how to simulate an alignment which comes from multiple trees.
 

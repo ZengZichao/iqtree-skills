@@ -41,7 +41,7 @@ The IQ2MC workflow has three steps that integrate IQ-TREE and MCMCtree. The fina
   * `step2`: For fast approximate likelihood dating, MCMC requires the gradients and the Hessian/Hessians of the branch lengths calculated at maximum likelihood estimates. Given the rooted tree with fossil/tip calibrations, the substitution model, and the MSA, IQ-TREE generates the Hessian file containing the gradients and the Hessian/Hessian and all required files to run MCMCtree for dating. If the rooted tree provided for this step does not include fossil/tip calibrations, users need to calibrate the tree with commonly used tree editing tools such as FigTree or iTOL before step 3.
   * `step3`: Now, you can directly run MCMCtree from the IQ-TREE output of step 2 and infer the time tree.
 
-![Node dates in FigTree](../assets/images/mcmctree-dating.png)
+![Node dates in FigTree](../../assets/images/mcmctree-dating.png)
 
 ## Estimating the gradients and the Hessian for MCMCtree dating
 
@@ -74,7 +74,7 @@ iqtree3 -s example.phy -m GTR+G4 -te example_tree.nwk --dating mcmctree --mcmc-i
 
 ## Using partitions and mixture models for approximate likelihood dating
 
-IQ-TREE supports three partition models for approximate likelihood dating. Under the Edge-unlinked (EUL) model (`-Q` option), IQ-TREE generates the Hessian file which contains separate gradients and Hessian for each partition. For the Edge-linked (EL) partition model (`-p` option), the Hessian file contains only one gradient vector and a Hessian as branches are shared across partitions. See [Complex Models](Complex-Models.md) for how to specify partition and mixture models. If your partition file is called `example.nex`:
+IQ-TREE supports three partition models for approximate likelihood dating. Under the Edge-unlinked (EUL) model (`-Q` option), IQ-TREE generates the Hessian file which contains separate gradients and Hessian for each partition. For the Edge-linked (EL) partition model (`-p` option), the Hessian file contains only one gradient vector and a Hessian as branches are shared across partitions. See [Complex Models](../../iqtree-complex-models/references/complex-models.md) for how to specify partition and mixture models. If your partition file is called `example.nex`:
 
 ```
 # -Q option is to specify egde-unlinked partition model
@@ -87,7 +87,7 @@ IQ-TREE also supports mixture models for the Hessian file generation. You can si
 iqtree3 -s example.phy  -m "MIX{GTR,HKY}+G4" -te example_tree.nwk –-dating mcmctree
 ```
 
-(Or you can also invoke [MixtureFinder](Complex-Models.md#mixturefinder) with `-m MIX+MFP` to determine mixture models automatically).
+(Or you can also invoke [MixtureFinder](../../iqtree-complex-models/references/complex-models.md#mixturefinder) with `-m MIX+MFP` to determine mixture models automatically).
 
 If you need to use an Amino Acid profile mixture model such as C60 model,
 
@@ -215,7 +215,7 @@ where `ALN_FILE` is the sequence alignment and `DATE_FILE` is the date file. Thi
   * `ALN_FILE.timetree.nex`: Time tree file in NEXUS format, that can be viewed nicely in FigTree (Click on “Node Labels” on the left tab and choose “Display” as “date” in FigTree, see figure below).
   * `ALN_FILE.timetree.nwk`: Time tree file in NEWICK format.
 
-![Node dates in FigTree](../assets/images/dating-figtree.png)
+![Node dates in FigTree](../../assets/images/dating-figtree.png)
 
 This command will automatically detect the best root position (according to LSD criterion). However, if the root is incorrectly inferred, it may produce wrong dates. Therefore, it is advisable to provide outgroup taxa if possible. In this example, we have this information, so you can use `-o` option:
 

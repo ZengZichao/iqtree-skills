@@ -42,14 +42,14 @@ The name IQ-TREE comes from the fact that it is the successor of [**IQ** PNNI](h
   * **Ultrafast bootstrap** : An ultrafast bootstrap approximation (UFBoot) to assess branch supports. UFBoot is 10 to 40 times faster than RAxML rapid bootstrap and obtains less biased support values ([Minh et al., 2013](https://doi.org/10.1093/molbev/mst024); [Hoang et al., 2018](https://doi.org/10.1093/molbev/msx281)).
   * **Ultrafast model selection** : An ultrafast and automatic model selection (ModelFinder) which is 10 to 100 times faster than jModelTest and ProtTest. ModelFinder also finds best-fit partitioning scheme like PartitionFinder ([Kalyaanamoorthy et al., 2017](https://doi.org/10.1038/nmeth.4285)).
   * **Simulating sequences** : A fast sequence alignment simulator (AliSim) which is much more realistic than Seq-Gen and INDELible ([Ly-Trong et al., 2023](https://doi.org/10.1093/bioinformatics/btad540)).
-  * **Big Data Analysis** : Supporting huge datasets with thousands of sequences or millions of alignment sites via [checkpointing](Command-Reference.md#checkpointing-to-resume-stopped-run), safe numerical and low memory mode. [Multicore CPUs](Tutorial.md#utilizing-multi-core-cpus) and [parallel MPI system](Compilation-Guide.md#compiling-mpi-version) are utilized to speedup analysis.
+  * **Big Data Analysis** : Supporting huge datasets with thousands of sequences or millions of alignment sites via [checkpointing](../../iqtree-command-reference/references/command-reference.md#checkpointing-to-resume-stopped-run), safe numerical and low memory mode. [Multicore CPUs](tutorial.md#utilizing-multi-core-cpus) and [parallel MPI system](compilation-guide.md#compiling-mpi-version) are utilized to speedup analysis.
   * **Phylogenetic testing** : Several fast branch tests like SH-aLRT and aBayes test ([Anisimova et al., 2011](https://doi.org/10.1093/sysbio/syr041)) and tree topology tests like the approximately unbiased (AU) test ([Shimodaira, 2002](https://doi.org/10.1080/10635150290069913)).
 
 The strength of IQ-TREE is the availability of a wide variety of phylogenetic models:
 
-  * **Common models** : All [common substitution models](Substitution-Models.md) for DNA, protein, codon, binary and morphological data with [rate heterogeneity among sites](Substitution-Models.md#rate-heterogeneity-across-sites) and [ascertainment bias correction](Substitution-Models.md#ascertainment-bias-correction) for e.g. SNP data.
-  * **[Partition models](Complex-Models.md#partition-models)** : Allowing individual models for different genomic loci (e.g. genes or codon positions), mixed data types, mixed rate heterogeneity types, linked or unlinked branch lengths between partitions.
-  * **Mixture models** : [fully customizable mixture models](Complex-Models.md#mixture-models) and [empirical protein mixture models](Substitution-Models.md#protein-mixture-models) and.
+  * **Common models** : All [common substitution models](../../iqtree-model-selection/references/substitution-models.md) for DNA, protein, codon, binary and morphological data with [rate heterogeneity among sites](../../iqtree-model-selection/references/substitution-models.md#rate-heterogeneity-across-sites) and [ascertainment bias correction](../../iqtree-model-selection/references/substitution-models.md#ascertainment-bias-correction) for e.g. SNP data.
+  * **[Partition models](../../iqtree-complex-models/references/complex-models.md#partition-models)** : Allowing individual models for different genomic loci (e.g. genes or codon positions), mixed data types, mixed rate heterogeneity types, linked or unlinked branch lengths between partitions.
+  * **Mixture models** : [fully customizable mixture models](../../iqtree-complex-models/references/complex-models.md#mixture-models) and [empirical protein mixture models](../../iqtree-model-selection/references/substitution-models.md#protein-mixture-models) and.
   * **Polymorphism-aware models** : Accounting for _incomplete lineage sorting_ to infer species tree from genome-wide population data ([Schrempf et al., 2016](https://doi.org/10.1016/j.jtbi.2016.07.042)).
 
 ## Free web server
@@ -68,16 +68,16 @@ If you find a bug (e.g. when IQ-TREE prints a crash message) or want to request 
 
 IQ-TREE has an extensive documentation with several tutorials and manual:
 
-  * [Getting started guide](Quickstart.md): recommended for users who just downloaded IQ-TREE.
-  * [Web Server Tutorial](Web-Server-Tutorial.md): A quick starting guide for the IQ-TREE Web Server.
-  * [Beginner’s tutorial](Tutorial.md): recommended for users starting to use IQ-TREE.
-  * [Advanced tutorial](Advanced-Tutorial.md): recommended for more experienced users who want to explore more features of IQ-TREE.
-  * [Command Reference](Command-Reference.md): Comprehensive documentation of command-line options available in IQ-TREE.
-  * [Substitution Models](Substitution-Models.md): All common substitution models and usages.
-  * [Complex Models](Complex-Models.md): Complex models such as partition and mixture models.
-  * [Polymorphism Aware Models](Polymorphism-Aware-Models.md): Polymorphism-aware phylogenetic Models (PoMo) related documentation.
-  * [Compilation guide](Compilation-Guide.md): for advanced users who wants to compile IQ-TREE from source code.
-  * [Frequently asked questions (FAQ)](Frequently-Asked-Questions.md): recommended to have a look before you post a question in the [IQ-TREE group](https://groups.google.com/d/forum/iqtree).
+  * [Getting started guide](quickstart.md): recommended for users who just downloaded IQ-TREE.
+  * [Web Server Tutorial](web-server-tutorial.md): A quick starting guide for the IQ-TREE Web Server.
+  * [Beginner’s tutorial](tutorial.md): recommended for users starting to use IQ-TREE.
+  * [Advanced tutorial](../../iqtree-complex-models/references/advanced-tutorial.md): recommended for more experienced users who want to explore more features of IQ-TREE.
+  * [Command Reference](../../iqtree-command-reference/references/command-reference.md): Comprehensive documentation of command-line options available in IQ-TREE.
+  * [Substitution Models](../../iqtree-model-selection/references/substitution-models.md): All common substitution models and usages.
+  * [Complex Models](../../iqtree-complex-models/references/complex-models.md): Complex models such as partition and mixture models.
+  * [Polymorphism Aware Models](../../iqtree-poms/references/polymorphism-aware-models.md): Polymorphism-aware phylogenetic Models (PoMo) related documentation.
+  * [Compilation guide](compilation-guide.md): for advanced users who wants to compile IQ-TREE from source code.
+  * [Frequently asked questions (FAQ)](faq.md): recommended to have a look before you post a question in the [IQ-TREE group](https://groups.google.com/d/forum/iqtree).
 
 ## How to cite IQ-TREE?
 

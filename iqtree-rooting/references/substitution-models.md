@@ -379,7 +379,7 @@ Except for `GTR2` that has unequal state frequencies, all other models have equa
 
 > **TIP** : For binary morphological characters where `0`s represent ancestral conditions and `1`s represent derived conditions, mainly neomorphic (`absent`/`present`) morphological characters (for the term, see [Sereno, 2007](https://doi.org/10.1111/j.1096-0031.2007.00161.x)), allowing asymmetrical frequencies in models would make sense (see e.g. [Pyron, 2017](https://doi.org/10.1093/sysbio/syw068); [Sun et al., 2018](https://doi.org/10.1098/rspb.2018.1780); <https://ms609.github.io/hyoliths/bayesian.html>). This can be achieved in IQ-TREE, for example, by using the `GTR2` model.
 
-> **TIP** : If morphological alignments do not contain constant sites (typically the case), then [an ascertainment bias correction model (`+ASC`)](Substitution-Models.md#ascertainment-bias-correction) should be applied to correct the branch lengths for the absence of constant sites.
+> **TIP** : If morphological alignments do not contain constant sites (typically the case), then [an ascertainment bias correction model (`+ASC`)](substitution-models.md#ascertainment-bias-correction) should be applied to correct the branch lengths for the absence of constant sites.
 
 ## Ascertainment bias correction
 

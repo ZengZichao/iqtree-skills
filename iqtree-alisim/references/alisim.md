@@ -99,7 +99,7 @@ Apart from the DNA data, AliSim can also simulate other types of data under amin
 
 ### Amino-acid models
 
-AliSim supports all common [empirical amino-acid models](Substitution-Models.md#protein-models). For example, to simulate an alignment under the [LG model](https://doi.org/10.1093/molbev/msn067):
+AliSim supports all common [empirical amino-acid models](../../iqtree-model-selection/references/substitution-models.md#protein-models). For example, to simulate an alignment under the [LG model](https://doi.org/10.1093/molbev/msn067):
 
 ```
 iqtree3 --alisim alignment_aa -m "LG" -t tree.nwk
@@ -107,7 +107,7 @@ iqtree3 --alisim alignment_aa -m "LG" -t tree.nwk
 
 ### Codon models
 
-AliSim offers several [codon models](Substitution-Models.md#codon-substitution-rates). For example:
+AliSim offers several [codon models](../../iqtree-model-selection/references/substitution-models.md#codon-substitution-rates). For example:
 
 ```
 iqtree3 --alisim alignment_codon -m "MG{2.0}+F1X4{0.2/0.3/0.4/0.1}" -t tree.nwk
@@ -117,7 +117,7 @@ This simulates an alignment under MG model with Nonsynonymous/synonymous (dn/ds)
 
 ### Binary and morphological models
 
-AliSim supports some [binary and morphological models](Substitution-Models.md#binary-and-morphological-models). For example:
+AliSim supports some [binary and morphological models](../../iqtree-model-selection/references/substitution-models.md#binary-and-morphological-models). For example:
 
 ```
 iqtree3 --alisim alignment_bin -m "JC2" -t tree.nwk
@@ -141,7 +141,7 @@ iqtree3 --alisim alignment_morph_asc -m "MK+ASC" -t tree.nwk -st "MORPH{20}"
 
 ## Non-reversible models
 
-Apart from the standard reversible models, AliSim also provides non-reversible models such as [Lie Markov DNA models](Substitution-Models.md#lie-markov-models), for DNA and NONREV for amino-acid.
+Apart from the standard reversible models, AliSim also provides non-reversible models such as [Lie Markov DNA models](../../iqtree-model-selection/references/substitution-models.md#lie-markov-models), for DNA and NONREV for amino-acid.
 
 As an example, to simulate an alignment under the 12.12 model (equivalent to UNREST (unrestricted model)):
 
@@ -149,7 +149,7 @@ As an example, to simulate an alignment under the 12.12 model (equivalent to UNR
 iqtree3 --alisim alignment_lie_markov -m "12.12{0.5/0.6/0.9/0.2/0.1/0.4/0.7/0.8/0.3/0.15/0.65}+F{0.1/0.2/0.4/0.3}" -t tree.nwk
 ```
 
-**NOTE:** Users can specify base frequencies with `+F{...}`. Without this, AliSim randomly generates the state frequencies from empirical distributions (See [Specifying model parameters](AliSim.md#specifying-model-parameters)).
+**NOTE:** Users can specify base frequencies with `+F{...}`. Without this, AliSim randomly generates the state frequencies from empirical distributions (See [Specifying model parameters](alisim.md#specifying-model-parameters)).
 
 ## Rate heterogeneity across sites
 
@@ -345,9 +345,9 @@ Similarly, for discrete rate heterogeneity (based on Gamma/Free-rate distributio
 
 NOTE:
 
-  * When mimicking an alignment and specifying `--length` option without an [insertion-deletion model](AliSim.md#insertion-and-deletion-models), the output alignment might be shorter or longer than the original alignment. If shorter, AliSim will copy the gap patterns from the original alignment from site 1 to the last site index in the output alignment. If longer, AliSim can only copy gaps from site 1 to the last site of the original alignment. All remaining sites until the end of the output alignment won’t contain any gaps.
+  * When mimicking an alignment and specifying `--length` option without an [insertion-deletion model](alisim.md#insertion-and-deletion-models), the output alignment might be shorter or longer than the original alignment. If shorter, AliSim will copy the gap patterns from the original alignment from site 1 to the last site index in the output alignment. If longer, AliSim can only copy gaps from site 1 to the last site of the original alignment. All remaining sites until the end of the output alignment won’t contain any gaps.
 
-  * When mimicking an alignment with an [insertion-deletion model](AliSim.md#insertion-and-deletion-models), AliSim will set the root sequence length to the original alignment length if `--length` is not specified (otherwise it is equal to `--length` option). Moreover, AliSim will ignore the gaps from the original alignment and generate gaps according to the indel model.
+  * When mimicking an alignment with an [insertion-deletion model](alisim.md#insertion-and-deletion-models), AliSim will set the root sequence length to the original alignment length if `--length` is not specified (otherwise it is equal to `--length` option). Moreover, AliSim will ignore the gaps from the original alignment and generate gaps according to the indel model.
 
 ## Simulating along a random tree
 
@@ -368,7 +368,7 @@ For other model, uses can specify `u`, `cat`, or `bal` for Uniform, Caterpillar,
 
 `<NUM_TAXA>` can be a fixed number, or a list `{<NUM_1>/<NUM_2>/.../<NUM_N>}`, or a Uniform distribution `U{<LOWER_BOUND>/<UPPER_BOUND>}` where the number of taxa is randomly generated from the given list or distribution.
 
-In the above examples, AliSim generates `alignment_yh.phy` or `alignment_bd.phy` under the Jukes-Cantor DNA model. If you want to change the model, use -m option as [described above](AliSim.md#specifying-model-parameters).
+In the above examples, AliSim generates `alignment_yh.phy` or `alignment_bd.phy` under the Jukes-Cantor DNA model. If you want to change the model, use -m option as [described above](alisim.md#specifying-model-parameters).
 
 For the distribution of branch lengths, users could adjust the minimum, mean and maximum of the exponential distribution via the option `-rlen <MIN_LEN> <MEAN_LEN> <MAX_LEN>`.
 
@@ -433,7 +433,7 @@ Here, AliSim first generates a random sequence at the root based on the user-spe
 
 ## Partition models
 
-AliSim allows users to simulate a multi-locus alignment using a partition model specified in a NEXUS file as described in the [partition model tutorial](Complex-Models.md#partition-models). An example partition file may look like:
+AliSim allows users to simulate a multi-locus alignment using a partition model specified in a NEXUS file as described in the [partition model tutorial](../../iqtree-complex-models/references/complex-models.md#partition-models). An example partition file may look like:
 
 ```
 #nexus
@@ -451,7 +451,7 @@ begin sets;
 end;
 ```
 
-This means that we define an alignment with 5 genes (partitions). The gene positions are described in `charset` command and the models for each gene are specified in `charpartition` command. Moreover, we use the [HKY model](https://dx.doi.org/10.1007%2FBF02101694) for gene_1 with transition-transversion ratio of 2 and nucleotide frequencies of 0.2, 0.3, 0.1, 0.4 for A, C, G and T, respectively. See also the [custom model section](AliSim.md#specifying-model-parameters) for how to specify model parameters.
+This means that we define an alignment with 5 genes (partitions). The gene positions are described in `charset` command and the models for each gene are specified in `charpartition` command. Moreover, we use the [HKY model](https://dx.doi.org/10.1007%2FBF02101694) for gene_1 with transition-transversion ratio of 2 and nucleotide frequencies of 0.2, 0.3, 0.1, 0.4 for A, C, G and T, respectively. See also the [custom model section](alisim.md#specifying-model-parameters) for how to specify model parameters.
 
 Assuming we name this partition file `multi_genes.nex`. Then, you can simulate an alignment consisting of these five genes by
 
@@ -547,21 +547,21 @@ At the end of the run, AliSim writes out the simulated alignments into four outp
 
 ## Mixture models
 
-AliSim allows users to simulate alignments under [protein mixture models](Substitution-Models.md#protein-mixture-models) for example:
+AliSim allows users to simulate alignments under [protein mixture models](../../iqtree-model-selection/references/substitution-models.md#protein-mixture-models) for example:
 
 ```
 iqtree3 --alisim alignment_mix_C10 -m "C10" -t tree.nwk
 ```
 
-to simulate a new alignment under the [C10 mixture model](Complex-Models.md#mixture-models).
+to simulate a new alignment under the [C10 mixture model](../../iqtree-complex-models/references/complex-models.md#mixture-models).
 
-Besides, users can simulate alignments from user-defined mixture model via `MIX{<model_1>,...,<model_n>}` as described in [Mixture models](Complex-Models.md#mixture-models). The following example simulates an alignment under a mixture model contains 2 model components (JC, and HKY) with rate heterogeneity across sites based on discrete Gamma distribution.
+Besides, users can simulate alignments from user-defined mixture model via `MIX{<model_1>,...,<model_n>}` as described in [Mixture models](../../iqtree-complex-models/references/complex-models.md#mixture-models). The following example simulates an alignment under a mixture model contains 2 model components (JC, and HKY) with rate heterogeneity across sites based on discrete Gamma distribution.
 
 ```
 iqtree3 --alisim alignment_mix_JC_HKY_G -m "MIX{JC,HKY{2.0}+F{0.2/0.4/0.1/0.3}}+G4" -t tree.nwk
 ```
 
-To simulate alignments with more complex mixture models, users can define a new mixture via a model definition file and supply it to AliSim via `-mdef <model_file>`. For more detail about how to define a mixture model, please have a look at [Profile Mixture Models](Complex-Models.md#profile-mixture-models).
+To simulate alignments with more complex mixture models, users can define a new mixture via a model definition file and supply it to AliSim via `-mdef <model_file>`. For more detail about how to define a mixture model, please have a look at [Profile Mixture Models](../../iqtree-complex-models/references/complex-models.md#profile-mixture-models).
 
 ## Heterotachy GHOST model
 
@@ -661,7 +661,7 @@ AliSim supports simulating many large alignments in parallel with OpenMP and/or 
 iqtree3 --alisim large_alignment -t tree.nwk --length 1000000 -m "JC" -nt 4
 ```
 
-This example simulates a new alignment under the Juke-Cantor model from the input tree `tree.nwk` with the sequence length of 1,000,0000 sites using 4 threads. For multithreading simulations, AliSim supports two algorithms AliSim-OpenMP-IM (default) and AliSim-OpenMP-EM (please see [AliSim-HPC](AliSim.md#)). Users can specify `--openmp-alg EM` if they want to employ the AliSim-OpenMP-EM algorithm.
+This example simulates a new alignment under the Juke-Cantor model from the input tree `tree.nwk` with the sequence length of 1,000,0000 sites using 4 threads. For multithreading simulations, AliSim supports two algorithms AliSim-OpenMP-IM (default) and AliSim-OpenMP-EM (please see [AliSim-HPC](alisim.md)). Users can specify `--openmp-alg EM` if they want to employ the AliSim-OpenMP-EM algorithm.
 
 **NOTES** :
 

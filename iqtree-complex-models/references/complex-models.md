@@ -32,7 +32,7 @@ _Last update: Mar 12, 2025, Contributors: 928003585, Hector Banos, Dominik Schre
 
 Complex models such as partition and mixture models.
 
-This document gives detailed descriptions of complex maximum-likelihood models available in IQ-TREE. It is assumed that you know the [basic substitution models](Substitution-Models.md) already.
+This document gives detailed descriptions of complex maximum-likelihood models available in IQ-TREE. It is assumed that you know the [basic substitution models](../../iqtree-model-selection/references/substitution-models.md) already.
 
 ## Partition models
 
@@ -119,11 +119,11 @@ begin sets;
 end;
 ```
 
-Note that this assumes `part1` has standard genetic code. If not, append `CODON` with [the right genetic code ID](Substitution-Models.md#codon-models).
+Note that this assumes `part1` has standard genetic code. If not, append `CODON` with [the right genetic code ID](../../iqtree-model-selection/references/substitution-models.md#codon-models).
 
 ### Partitioned analysis
 
-Having prepared a partition file, one is ready to start a partitioned analysis with `-q` (edge-equal), `-spp` (edge-proportional) or `-sp` (edge-unlinked) option. See [this tutorial](Advanced-Tutorial.md#partitioned-analysis-for-multi-gene-alignments) for more details.
+Having prepared a partition file, one is ready to start a partitioned analysis with `-q` (edge-equal), `-spp` (edge-proportional) or `-sp` (edge-unlinked) option. See [this tutorial](advanced-tutorial.md#partitioned-analysis-for-multi-gene-alignments) for more details.
 
 ## Mixture models
 
@@ -131,7 +131,7 @@ Having prepared a partition file, one is ready to start a partitioned analysis w
 
 Mixture models, like partition models, allow more than one substitution model along the sequences. However, while a partition model assigns each alignment site a given specific model, mixture models do not need this information. A mixture model will compute for each site its probability (or weight) of belonging to each of the mixture classes (also called categories or components). Since the site-to-class assignment is unknown, the site likelihood under mixture models is the weighted sum of site likelihoods per mixture class.
 
-For example, the [discrete Gamma rate heterogeneity](Substitution-Models.md#rate-heterogeneity-across-sites) is a simple mixture model type. It has several rate categories with equal weight. IQ-TREE also supports a number of [predefined protein mixture models](Substitution-Models.md#protein-mixture-models) such as the profile mixture models `C10` to `C60` (The ML variants of Bayesian `CAT` models).
+For example, the [discrete Gamma rate heterogeneity](../../iqtree-model-selection/references/substitution-models.md#rate-heterogeneity-across-sites) is a simple mixture model type. It has several rate categories with equal weight. IQ-TREE also supports a number of [predefined protein mixture models](../../iqtree-model-selection/references/substitution-models.md#protein-mixture-models) such as the profile mixture models `C10` to `C60` (The ML variants of Bayesian `CAT` models).
 
 Here, we discuss several possibilities to define new mixture models in IQ-TREE.
 
@@ -210,7 +210,7 @@ If you use MixtureFinder in a publication please cite:
 
 ### Profile mixture models
 
-Sometimes one only wants to model the changes in nucleotide or amino-acid frequencies along the sequences while keeping the substitution rate matrix the same. This can be specified in IQ-TREE via `FMIX{...}` model syntax. For convenience the mixture components can be defined in a NEXUS file like this (example corresponds to [the CF4 model](Substitution-Models.md#protein-mixture-models) of ([Wang et al., 2008](https://doi.org/10.1186/1471-2148-8-331))):
+Sometimes one only wants to model the changes in nucleotide or amino-acid frequencies along the sequences while keeping the substitution rate matrix the same. This can be specified in IQ-TREE via `FMIX{...}` model syntax. For convenience the mixture components can be defined in a NEXUS file like this (example corresponds to [the CF4 model](../../iqtree-model-selection/references/substitution-models.md#protein-mixture-models) of ([Wang et al., 2008](https://doi.org/10.1186/1471-2148-8-331))):
 
 ```
 #nexus
@@ -242,7 +242,7 @@ The `-mdef` option specifies the NEXUS file containing user-defined models (see 
 
 ### NEXUS model file
 
-In fact, IQ-TREE uses this NEXUS model file internally to define all [protein mixture models](Substitution-Models.md#protein-mixture-models). In addition to defining state frequencies, one can specify the entire model with rate matrix and state frequencies together. For example, the LG4M model ([Le et al., 2012](https://doi.org/10.1093/molbev/mss112)) can be defined by:
+In fact, IQ-TREE uses this NEXUS model file internally to define all [protein mixture models](../../iqtree-model-selection/references/substitution-models.md#protein-mixture-models). In addition to defining state frequencies, one can specify the entire model with rate matrix and state frequencies together. For example, the LG4M model ([Le et al., 2012](https://doi.org/10.1093/molbev/mss112)) can be defined by:
 
 ```
 #nexus
@@ -259,7 +259,7 @@ begin models;
 end;
 ```
 
-Here, we first define the four matrices `LG4M1`, `LG4M2`, `LG4M3` and `LG4M4` in PAML format (see [protein models](Substitution-Models.md#protein-models)). Then `LG4M` is defined as mixture model with these four components _fused_ with Gamma rate heterogeneity (via `*G4` syntax instead of `+G4`). This means that, in total, we have 4 mixture components instead of 16. The first component `LG4M1` is rescaled by the rate of the lowest Gamma rate category. The fourth component `LG4M4` corresponds to the highest rate.
+Here, we first define the four matrices `LG4M1`, `LG4M2`, `LG4M3` and `LG4M4` in PAML format (see [protein models](../../iqtree-model-selection/references/substitution-models.md#protein-models)). Then `LG4M` is defined as mixture model with these four components _fused_ with Gamma rate heterogeneity (via `*G4` syntax instead of `+G4`). This means that, in total, we have 4 mixture components instead of 16. The first component `LG4M1` is rescaled by the rate of the lowest Gamma rate category. The fourth component `LG4M4` corresponds to the highest rate.
 
 Note that both `frequency` and `model` commands can be embedded into a single model file.
 
@@ -320,11 +320,11 @@ iqtree-omp -nt 24 -s <alignment> -m LG+C20+F+G -fs <file.sitefreq>
 iqtree -nt 24 -s <alignment> -m LG+C20+F+G -fs <file.sitefreq>
 ```
 
-See also [the list of relevant command line options](Command-Reference.md#site-specific-frequency-model-options).
+See also [the list of relevant command line options](../../iqtree-command-reference/references/command-reference.md#site-specific-frequency-model-options).
 
 ## Heterotachy models
 
-Sequence data that have evolved under _heterotachy_ , i.e., rate variation across sites and lineages ([Lopez, Casane, and Philippe, 2002](http://mbe.oxfordjournals.org/content/19/1/1.full)), are known to mislead phylogenetic inference ([Kolaczkowski and Thornton, 2004](https://doi.org/10.1038/nature02917)). To address this issue we introduce the General Heterogeneous evolution On a Single Topology (GHOST) model. More specifically, GHOST is an _edge-unlinked mixture model_ consisting of several site classes, each having a separate set of model parameters and edge lengths on the same tree topology. Thus, GHOST naturally accounts for heterotachous evolution. In contrast to an [edge-unlinked partition model](Complex-Models.md#partition-models), the GHOST model does not require the _a priori_ data partitioning, a possible source of model misspecification.
+Sequence data that have evolved under _heterotachy_ , i.e., rate variation across sites and lineages ([Lopez, Casane, and Philippe, 2002](http://mbe.oxfordjournals.org/content/19/1/1.full)), are known to mislead phylogenetic inference ([Kolaczkowski and Thornton, 2004](https://doi.org/10.1038/nature02917)). To address this issue we introduce the General Heterogeneous evolution On a Single Topology (GHOST) model. More specifically, GHOST is an _edge-unlinked mixture model_ consisting of several site classes, each having a separate set of model parameters and edge lengths on the same tree topology. Thus, GHOST naturally accounts for heterotachous evolution. In contrast to an [edge-unlinked partition model](complex-models.md#partition-models), the GHOST model does not require the _a priori_ data partitioning, a possible source of model misspecification.
 
 Extensive simulations show that the GHOST model can accurately recover the tree topology, branch lengths, substitution rate and base frequency parameters from heterotachously-evolved sequences. Moreover, we compare the GHOST model to the partition model and show that, owing to the minimization of model constraints, the GHOST model is able to offer unique biological insights when applied to empirical data.
 

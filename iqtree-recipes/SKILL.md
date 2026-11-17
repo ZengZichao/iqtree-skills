@@ -379,7 +379,7 @@ Before using any of the left-hand options, confirm them on the installed build, 
 
 ## Quick option lookup without loading whole files
 
-`references/command-reference.md` is ~7.4k words across 33 headings — pull only the section you need:
+`references/command-reference.md` is ~7.4k words across 34 headings (20 sections + 14 subsections) — pull only the section you need:
 
 ```bash
 cd "$(dirname "$0")"        # or: cd /path/to/iqtree-recipes
@@ -434,6 +434,6 @@ Section-to-task map:
 - `references/goldman-cox-test.md` — Recipe B: gap-free-input requirement, the single `--alisim --num-alignments 999` command, `get_delta()` helper, the exact `.iqtree` lines to parse, ranking logic and R plotting code.
 - `references/concordance-vector.md` — Recipe C: environment setup, `-S` gene trees, ASTRAL `-q`/`-t 2` annotation, the three chained IQ-TREE commands, every `.cf.stat`/`.treefile` output, the complete `concordance_vectors.csv` column dictionary and CI methodology.
 - `references/Simulating-concatenated-alignments-with-multiple-trees.md` — Recipe D: two-tree AMAS workflow, the generalised bash loop, and the author's caveats on random-tree distinctness and error checking. Note the page itself redirects readers to "Topology-unlinked partition model" in the AliSim docs (Recipe D3 above).
-- `references/command-reference.md` — 33-section IQ-TREE option reference (use the greps above). Load only the section you need; never read all ~7.4k words.
+- `references/command-reference.md` — 34-heading IQ-TREE option reference (use the greps above). Load only the section you need; never read all ~7.4k words.
 - `references/index.md` — the recipes index page listing the four official recipes (22 lines; safe to read whole).
 - `../iqtree-alisim/references/alisim.md` (sibling skill folder, read-only) — AliSim option table and the topology-unlinked partition model section used in Recipe D3.

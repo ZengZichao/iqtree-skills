@@ -54,7 +54,7 @@ IQ-TREE is invoked from the command-line with e.g.:
 iqtree -s <alignment> [OPTIONS]
 ```
 
-assuming that IQ-TREE can be run by simply entering `iqtree`. If not, please change `iqtree` to the actual path of the executable or read the [Quick start guide](Quickstart.md).
+assuming that IQ-TREE can be run by simply entering `iqtree`. If not, please change `iqtree` to the actual path of the executable or read the [Quick start guide](../../iqtree/references/quickstart.md).
 
 ## General options
 
@@ -161,7 +161,7 @@ iqtree -s example.phy -lmap 2000 -n 0 -m TEST
 
 You can now view the likelihood mapping plot file `example.phy.lmap.svg`, which looks like this:
 
-![Likelihood mapping plot.](../assets/images/example.phy.lmap.pdf)
+![Likelihood mapping plot.](../../assets/images/example.phy.lmap.pdf)
 
 It shows phylogenetic information of the alignment `example.phy`. On the top: distribution of quartets depicted by dots on the likelihood mapping plot. On the left: the three areas show support for one of the different groupings like (a,b)-(c,d). On the right: quartets falling into the three corners are informative. Those in three rectangles are partly informative and those in the center are uninformative. A good data set should have high number of informative quartets and low number of uninformative quartets. The meanings can also be found in the `LIKELIHOOD MAPPING STATISTICS` section of the report file `example.phy.iqtree`:
 
@@ -205,7 +205,7 @@ The default model (e.g., `HKY+F` for DNA, `LG` for protein data) may not fit wel
 
 > **TIP** : During model section, IQ-TREE will write a model checkpoint file (suffix `.model` in version <= 1.5.X or `.model.gz` in version >= 1.6.X) that stores information of all models tested so far. Thus, if IQ-TREE is interrupted for whatever reason, restarting the run will load this file to reuse the computation.
 
-IQ-TREE version 1.6 or later allows to additionally test [Lie Markov DNA models](Substitution-Models.md#lie-markov-models) by adding the following keyword to `-m` option:
+IQ-TREE version 1.6 or later allows to additionally test [Lie Markov DNA models](../../iqtree-model-selection/references/substitution-models.md#lie-markov-models) by adding the following keyword to `-m` option:
 
 | Option | Usage and meaning |
 | --- | --- |
@@ -215,7 +215,7 @@ IQ-TREE version 1.6 or later allows to additionally test [Lie Markov DNA models]
 | +LMMK | Additionally consider all Lie Markov models with MK symmetry |
 | +LMSS | Additionally consider all strand-symmetric Lie Markov models |
 
-When [a partition file is specified](Command-Reference.md#partition-model-options) then you can append `MERGE` keyword into `-m` option to find the best-fit partitioning scheme like PartitionFinder ([Lanfear et al., 2012](https://doi.org/10.1093/molbev/mss020)). More specifically,
+When [a partition file is specified](command-reference.md#partition-model-options) then you can append `MERGE` keyword into `-m` option to find the best-fit partitioning scheme like PartitionFinder ([Lanfear et al., 2012](https://doi.org/10.1093/molbev/mss020)). More specifically,
 
 | Option | Usage and meaning |
 | --- | --- |
@@ -337,7 +337,7 @@ iqtree -s prot.phy -m LG+C10+F+G
 iqtree -s prot.phy -m GTR20+C60+G --link-exchange --init-exchange LG -te guide.treefile
 ```
 
-> **NOTE** : For better and faster performance, read the [recommendations](Estimating-amino-acid-substitution-models.md#estimating-linked-exchangeabilities) provided in the Estimating amino acid substitution models section.
+> **NOTE** : For better and faster performance, read the [recommendations](../../iqtree-model-selection/references/estimating-aa-models.md#estimating-linked-exchangeabilities) provided in the Estimating amino acid substitution models section.
 
 ## Rate heterogeneity
 
@@ -351,7 +351,7 @@ The following `RateType`s are supported:
 | +R | FreeRate model (Yang, 1995; Soubrier et al., 2012) that generalizes +G by relaxing the assumption of Gamma-distributed rates. The number of categories can be specified with e.g. +R6. DEFAULT: 4 categories |
 | +I+R | invariable site plus FreeRate model. |
 
-See [Rate heterogeneity across sites](Substitution-Models.md#rate-heterogeneity-across-sites) for more details.
+See [Rate heterogeneity across sites](../../iqtree-model-selection/references/substitution-models.md#rate-heterogeneity-across-sites) for more details.
 
 Further options:
 
@@ -363,11 +363,11 @@ Further options:
 | --opt-gamma-inv | Perform more thorough estimation for +I+G model parameters |
 | -wsr | Write per-site rates to .rate file |
 
-Optionally, one can specify [Ascertainment bias correction](Substitution-Models.md#ascertainment-bias-correction) by appending `+ASC` to the model string. [Advanced mixture models](Complex-Models.md#mixture-models) can also be specified via `MIX{...}` and `FMIX{...}` syntax. Option `-mwopt` can be used to turn on optimizing weights of mixture models.
+Optionally, one can specify [Ascertainment bias correction](../../iqtree-model-selection/references/substitution-models.md#ascertainment-bias-correction) by appending `+ASC` to the model string. [Advanced mixture models](../../iqtree-complex-models/references/complex-models.md#mixture-models) can also be specified via `MIX{...}` and `FMIX{...}` syntax. Option `-mwopt` can be used to turn on optimizing weights of mixture models.
 
 ## Partition model options
 
-Partition models are used for phylogenomic data with multiple genes. You first have to prepare [a partition file in NEXUS or RAxML-style format](Complex-Models.md#partition-file-format). Then use the following options to input the partition file:
+Partition models are used for phylogenomic data with multiple genes. You first have to prepare [a partition file in NEXUS or RAxML-style format](../../iqtree-complex-models/references/complex-models.md#partition-file-format). Then use the following options to input the partition file:
 
 | Option | Usage and meaning |
 | --- | --- |
@@ -377,7 +377,7 @@ Partition models are used for phylogenomic data with multiple genes. You first h
 
 ## Site-specific frequency model options
 
-The site-specific frequency model is used to substantially reduce the time and memory requirement compared with full profile mixture models `C10` to `C60`. For full details see [site-specific frequency model](Complex-Models.md#site-specific-frequency-models). To use this model you have to specify a profile mixture model with e.g. `-m LG+C20+F+G` together with a guide tree or a site frequency file:
+The site-specific frequency model is used to substantially reduce the time and memory requirement compared with full profile mixture models `C10` to `C60`. For full details see [site-specific frequency model](../../iqtree-complex-models/references/complex-models.md#site-specific-frequency-models). To use this model you have to specify a profile mixture model with e.g. `-m LG+C20+F+G` together with a guide tree or a site frequency file:
 
 | Option | Usage and meaning |
 | --- | --- |

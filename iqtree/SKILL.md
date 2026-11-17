@@ -218,5 +218,6 @@ grep -n -A 30 "^## Utilizing multi-core CPUs" references/tutorial.md
 grep -n -A 20 "^## How does IQ-TREE treat gap/missing/ambiguous characters" references/faq.md
 grep -n -A 20 "^## Why does IQ-TREE complain" references/faq.md
 grep -n -A 25 "^## Compiling MPI version" references/compilation-guide.md
-grep -n -E "^\| (-s|-st|-T|-nt|-te|--prefix|B 1000)" references/quickstart.md
+grep -n -A 68 "^## Minimal command-line examples" references/quickstart.md
+grep -n "for version 1.x" references/quickstart.md
 ```

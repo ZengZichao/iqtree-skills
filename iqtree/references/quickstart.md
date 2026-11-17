@@ -25,7 +25,7 @@ Recommended for users who just downloaded IQ-TREE the first time.
 
 ## IQ-TREE web server
 
-The quickest is to try out the [IQ-TREE web server](http://iqtree.cibiv.univie.ac.at), where you only need to upload an alignment, choose the options and start the analysis. There is a [web server tutorial here](Web-Server-Tutorial.md).
+The quickest is to try out the [IQ-TREE web server](http://iqtree.cibiv.univie.ac.at), where you only need to upload an alignment, choose the options and start the analysis. There is a [web server tutorial here](web-server-tutorial.md).
 
 If you want to use the command-line version, follow the instructions below.
 
@@ -51,7 +51,7 @@ IQ-TREE for Windows, MacOSX and Linux can be [downloaded here](http://www.iqtree
   * Extract the `.zip` (Windows, MacOSX) or `.tar.gz` (Linux) file to create a directory `iqtree-X.Y.Z-OS`, where `X.Y.Z` is the version number and `OS` is the operating system (Windows, MacOSX or Linux).
   * You will find the executable in the `bin` sub-folder. Copy all files in `bin` folder to your system search path such that you can run IQ-TREE by entering `iqtree` from the Terminal.
 
-Now you need to open a Terminal (or Console) to run IQ-TREE. See below the guide for [Windows users](Quickstart.md#for-windows-users) and [Mac OS X users](Quickstart.md#for-mac-os-x-users).
+Now you need to open a Terminal (or Console) to run IQ-TREE. See below the guide for [Windows users](quickstart.md#for-windows-users) and [Mac OS X users](quickstart.md#for-mac-os-x-users).
 
 ## For Windows users
 
@@ -77,7 +77,7 @@ bin\iqtree -s example.phy
 
   5. After a few seconds, IQ-TREE finishes and you may see something like this:
 
-![Windows command prompt](../assets/images/win-cmd2.png)
+![Windows command prompt](../../assets/images/win-cmd2.png)
 
 Congratulations ;-) You have finished the first IQ-TREE analysis.
 
@@ -102,7 +102,7 @@ bin/iqtree -s example.phy
 
   4. After a few seconds, IQ-TREE finishes and you may see something like this:
 
-![Mac terminal](../assets/images/mac-cmd2.png)
+![Mac terminal](../../assets/images/mac-cmd2.png)
 
 Congratulations ;-) You have finished the first IQ-TREE analysis.
 
@@ -177,4 +177,4 @@ iqtree -h
 
 ## Where to go from here?
 
-Please continue with the **[Beginner’s tutorial](Tutorial.md)** for further usages.
+Please continue with the **[Beginner’s tutorial](tutorial.md)** for further usages.

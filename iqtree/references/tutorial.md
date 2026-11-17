@@ -26,7 +26,7 @@ _Last update: Sep 8, 2023, Contributors: Diep Thi Hoang, Heiko Schmidt, Jana Tri
 
 This tutorial gives a beginner’s guide.
 
-Please first [download](http://www.iqtree.org/#download) and [install](Quickstart.md) the binary for your platform. For the next steps, the folder containing your `iqtree` executable should be added to your PATH enviroment variable so that IQ-TREE can be invoked by simply entering `iqtree` at the command-line. Alternatively, you can also copy `iqtree` binary into your system search.
+Please first [download](http://www.iqtree.org/#download) and [install](quickstart.md) the binary for your platform. For the next steps, the folder containing your `iqtree` executable should be added to your PATH enviroment variable so that IQ-TREE can be invoked by simply entering `iqtree` at the command-line. Alternatively, you can also copy `iqtree` binary into your system search.
 
 > **TIP** : For quick overview of all supported options in IQ-TREE, run the command `iqtree -h`.
 
@@ -161,7 +161,7 @@ NOTE: If you use model selection please cite the following paper:
 
 > **S. Kalyaanamoorthy, B.Q. Minh, T.K.F. Wong, A. von Haeseler, and L.S. Jermiin** (2017) ModelFinder: fast model selection for accurate phylogenetic estimates. _Nat. Methods_ , 14:587–589. DOI: [10.1038/nmeth.4285](https://doi.org/10.1038/nmeth.4285)
 
-IQ-TREE supports a wide range of [substitution models](Substitution-Models.md) for DNA, protein, codon, binary and morphological alignments. If you do not know which model is appropriate for your data, you can use ModelFinder to determine the best-fit model:
+IQ-TREE supports a wide range of [substitution models](../../iqtree-model-selection/references/substitution-models.md) for DNA, protein, codon, binary and morphological alignments. If you do not know which model is appropriate for your data, you can use ModelFinder to determine the best-fit model:
 
 ```
 iqtree -s example.phy -m MFP
@@ -207,7 +207,7 @@ iqtree -s example.phy -m MF -mtree
 
 ## Using codon models
 
-IQ-TREE supports a number of [codon models](Substitution-Models.md#codon-models). You need to input a protein-coding DNA alignment and specify codon data by option `-st CODON` (Otherwise, IQ-TREE applies DNA model because it detects that your alignment has DNA sequences):
+IQ-TREE supports a number of [codon models](../../iqtree-model-selection/references/substitution-models.md#codon-models). You need to input a protein-coding DNA alignment and specify codon data by option `-st CODON` (Otherwise, IQ-TREE applies DNA model because it detects that your alignment has DNA sequences):
 
 ```
 iqtree -s coding_gene.phy -st CODON
@@ -215,7 +215,7 @@ iqtree -s coding_gene.phy -st CODON
 
 If your alignment length is not divisible by 3, IQ-TREE will stop with an error message. IQ-TREE will group sites 1,2,3 into codon site 1; sites 4,5,6 to codon site 2; etc. Moreover, any codon, which has at least one gap/unknown/ambiguous nucleotide, will be treated as unknown codon character.
 
-Note that the above command assumes the standard genetic code. If your sequences follow ‘The Invertebrate Mitochondrial Code’ (see [the full list of supported genetic code here](Substitution-Models.md#codon-models)), then run:
+Note that the above command assumes the standard genetic code. If your sequences follow ‘The Invertebrate Mitochondrial Code’ (see [the full list of supported genetic code here](../../iqtree-model-selection/references/substitution-models.md#codon-models)), then run:
 
 ```
 iqtree -s coding_gene.phy -st CODON5
@@ -255,7 +255,7 @@ or
 iqtree -s morphology.phy -st MORPH
 ```
 
-IQ-TREE implements to two morphological ML models: [MK and ORDERED](Substitution-Models.md#binary-and-morphological-models). Morphological data typically do not have constant (uninformative) sites. In such cases, you should apply [ascertainment bias correction](Substitution-Models.md#ascertainment-bias-correction) model by e.g.:
+IQ-TREE implements to two morphological ML models: [MK and ORDERED](../../iqtree-model-selection/references/substitution-models.md#binary-and-morphological-models). Morphological data typically do not have constant (uninformative) sites. In such cases, you should apply [ascertainment bias correction](../../iqtree-model-selection/references/substitution-models.md#ascertainment-bias-correction) model by e.g.:
 
 ```
 iqtree -s morphology.phy -st MORPH -m MK+ASC
@@ -298,7 +298,7 @@ iqtree -s example.phy -m TIM2+I+G -B 1000
   * `example.phy.splits.nex`: support values in percentage for all splits (bipartitions), computed as the occurence frequencies in the bootstrap trees. This file can be viewed with the program [SplitsTree](http://www.splitstree.org) to explore the conflicting signals in the data. So it is more informative than consensus tree, e.g. you can see how highly supported the second best conflicting split is, which had no chance to enter the consensus tree.
   * `example.phy.splits` (if using `-wsplits` option): This file contains the same information as `example.phy.splits.nex` but in star-dot format.
 
-> **NOTE** : UFBoot support values have a different interpretation to the standard bootstrap. Refer to [FAQ: UFBoot support values interpretation](Frequently-Asked-Questions.md#how-do-i-interpret-ultrafast-bootstrap-ufboot-support-values) for more information.
+> **NOTE** : UFBoot support values have a different interpretation to the standard bootstrap. Refer to [FAQ: UFBoot support values interpretation](faq.md#how-do-i-interpret-ultrafast-bootstrap-ufboot-support-values) for more information.
 
 ## Reducing impact of severe model violations with UFBoot
 
@@ -331,7 +331,7 @@ iqtree -s example.phy -m TIM2+I+G -alrt 1000
 
 `-alrt` specifies the number of bootstrap replicates for SH-aLRT where 1000 is the minimum number recommended.
 
-IQ-TREE also supports other tests such as the aBayes test ([Anisimova et al., 2011](https://doi.org/10.1093/sysbio/syr041)) and the local bootstrap test ([Adachi and Hasegawa, 1996b](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.476.8552)). See [single branch tests](Command-Reference.md#single-branch-tests) for more details.
+IQ-TREE also supports other tests such as the aBayes test ([Anisimova et al., 2011](https://doi.org/10.1093/sysbio/syr041)) and the local bootstrap test ([Adachi and Hasegawa, 1996b](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.476.8552)). See [single branch tests](../../iqtree-command-reference/references/command-reference.md#single-branch-tests) for more details.
 
 You can also perform both SH-aLRT and the ultrafast bootstrap within one single run:
 
@@ -425,4 +425,4 @@ does the same as above, but only allows to use up to 8 CPU cores. By default all
 
 ## Where to go from here?
 
-Once confident enough you can go on with a **[more advanced tutorial](Advanced-Tutorial.md)** , which covers topics like phylogenomic (multi-gene) analyses using partition models or mixture models.
+Once confident enough you can go on with a **[more advanced tutorial](../../iqtree-complex-models/references/advanced-tutorial.md)** , which covers topics like phylogenomic (multi-gene) analyses using partition models or mixture models.

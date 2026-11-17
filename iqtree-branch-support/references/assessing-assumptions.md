@@ -64,7 +64,7 @@ Now you may want to perform the phylogenetic analysis excluding all “bad” pa
 iqtree3 -s example.phy -p example.nex --symtest-remove-bad
 ```
 
-that will remove all “bad” partitions where SymPval < 0.05 and continue the analysis with the remaining “good” partitions. You may then compare the trees from “all” partitions and from “good” only partitions to see if there is significant difference between them with [tree topology tests](Advanced-Tutorial.md#tree-topology-tests).
+that will remove all “bad” partitions where SymPval < 0.05 and continue the analysis with the remaining “good” partitions. You may then compare the trees from “all” partitions and from “good” only partitions to see if there is significant difference between them with [tree topology tests](advanced-tutorial.md#tree-topology-tests).
 
 Other options can be seen when running `iqtree3 -h`:
 
@@ -93,7 +93,7 @@ where `-lmap` option specify the number of quartets of taxa that will be drawn r
 
 You can now view the likelihood mapping plot file `example.phy.lmap.svg`, which looks like this:
 
-![Likelihood mapping plot.](../assets/images/example.phy.lmap.pdf)
+![Likelihood mapping plot.](../../assets/images/example.phy.lmap.pdf)
 
 It shows phylogenetic information of the alignment `example.phy`.
 
@@ -130,4 +130,4 @@ and those in the center (7) are not informative.
 .....
 ```
 
-The [command reference](Command-Reference.md#likelihood-mapping-analysis) will provide more options and how to perform 2-, 3-, or 4-cluster likelihood mapping analysis.
+The [command reference](../../iqtree-command-reference/references/command-reference.md#likelihood-mapping-analysis) will provide more options and how to perform 2-, 3-, or 4-cluster likelihood mapping analysis.

@@ -62,7 +62,7 @@ For IQ-TREE version 1 please clone:
 git clone https://github.com/Cibiv/IQ-TREE.git
 ```
 
-Please find below separate compilation guide fors [Linux](Compilation-Guide.md#compiling-under-linux), [Mac OS X](Compilation-Guide.md#compiling-under-mac-os-x), and [Windows](Compilation-Guide.md#compiling-under-windows) as well as for [32-bit version](Compilation-Guide.md#compiling-32-bit-version) or for [MPI version](Compilation-Guide.md#compiling-mpi-version).
+Please find below separate compilation guide fors [Linux](compilation-guide.md#compiling-under-linux), [Mac OS X](compilation-guide.md#compiling-under-mac-os-x), and [Windows](compilation-guide.md#compiling-under-windows) as well as for [32-bit version](compilation-guide.md#compiling-32-bit-version) or for [MPI version](compilation-guide.md#compiling-mpi-version).
 
 ## Compiling under Linux
 

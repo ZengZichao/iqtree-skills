@@ -20,7 +20,7 @@ A quick starting guide for the IQ-TREE Web Server.
 
 This tutorial explains briefly how to use the IQ-TREE web server for fast online phylogenetic inference, accessible at [ **iqtree.cibiv.univie.ac.at**](http://iqtree.cibiv.univie.ac.at).
 
-There are three tabs: [Tree Inference](Web-Server-Tutorial.md#tree-inference), [Model Selection](Web-Server-Tutorial.md#model-selection) and [Analysis Results](Web-Server-Tutorial.md#analysis-results).
+There are three tabs: [Tree Inference](web-server-tutorial.md#tree-inference), [Model Selection](web-server-tutorial.md#model-selection) and [Analysis Results](web-server-tutorial.md#analysis-results).
 
 ## Tree Inference
 
@@ -28,7 +28,7 @@ Tree Inference provides the most frequently used features of IQ-TREE and allows 
 
 You can either try out the web server with an example alignment by ticking the corresponding box or upload your own alignment file. By clicking on ‘Browse’ a dialog will open where you can select your MSA; the file formats Phylip, Fasta, Nexus, Clustal and MSF are supported.
 
-![Tree Inference Tab](../assets/images/tut1.png)
+![Tree Inference Tab](../../assets/images/tut1.png)
 
 After that you can submit the job. If you provide an email address, a notification will be sent to you once the job is finished. In case you don’t specify an email address, you will receive a link in the next step; you can bookmark this link to retrieve your results after the job is finished.
 
@@ -36,15 +36,15 @@ After that you can submit the job. If you provide an email address, a notificati
 
 IQ-TREE supports a wide range of substitution models for DNA, protein, codon, binary and morphological alignments. In case you do not know which model is appropriate for your data, IQ-TREE can automatically determine the best-fit model for your alignment. Use the Model Selection tab if you only want to find the best-fit model without doing tree reconstruction.
 
-![Model Selection Tab](../assets/images/tut2.png)
+![Model Selection Tab](../../assets/images/tut2.png)
 
-Like with [Tree Inference](Web-Server-Tutorial.md#tree-inference), the only obligatory input is a multiple sequence alignment. You can either upload your own **alignment file** or use the **example alignment** to try out the web server and then **submit the job**.
+Like with [Tree Inference](web-server-tutorial.md#tree-inference), the only obligatory input is a multiple sequence alignment. You can either upload your own **alignment file** or use the **example alignment** to try out the web server and then **submit the job**.
 
 ## Analysis Results
 
 In the tab Analysis Results you can monitor your jobs. With our example file, a run will only take a few seconds, depending on the server load. For your own alignments the CPU time limit is 24 hours. If you provided an email address when submitting the job, you will get an email once it is finished.
 
-![Analysis Results](../assets/images/tut3.png)
+![Analysis Results](../../assets/images/tut3.png)
 
 Once a job is finished, you can select it by checking the corresponding box and then **download the selected jobs** as a zip file. This zip file will contain the results of your run, including the **Run Log** and the **Full Result** which are also accessible in the webserver.
 
@@ -58,4 +58,4 @@ Once a job is finished, you can select it by checking the corresponding box and 
 | .contree | Consensus tree with assigned branch supports where branch lengths are optimized on the original alignment; printed if Ultrafast Bootstrap is selected |
 | .ckp.gz | Checkpoint file; included if a job was stopped because of RAM/CPU limits |
 
-> **NOTE** : Jobs which require more than 24 hours or 1GB RAM will be stopped. In such a case, you can download the stopped job and resume the run from the last checkpoint on your local PC as [described here](Command-Reference.md#checkpointing-to-resume-stopped-run).
+> **NOTE** : Jobs which require more than 24 hours or 1GB RAM will be stopped. In such a case, you can download the stopped job and resume the run from the last checkpoint on your local PC as [described here](../../iqtree-command-reference/references/command-reference.md#checkpointing-to-resume-stopped-run).

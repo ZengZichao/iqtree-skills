@@ -378,12 +378,12 @@ grep -n -A 58 "^## Tests of symmetry" references/assessing-assumptions.md
 grep -n -A 30 "^## Likelihood mapping" references/assessing-assumptions.md
 ```
 
-Option tables live in the wider mirror (read-only, outside this skill folder):
-`/data/zengzichao/软件技能制作/iqtree-doc/markdown/Command-Reference.md` sections
+Option tables live in the sibling skill mirrors (read-only):
+`../iqtree-command-reference/references/command-reference.md` sections
 `Ultrafast bootstrap parameters` (line 486), `Nonparametric bootstrap` (516), `Single branch
 tests` (526), `Tree topology tests` (581), `Constructing consensus tree` (610), `Likelihood
-mapping analysis` (120); plus `Tutorial.md` lines 282-341 and
-`Frequently-Asked-Questions.md` lines 56-62 and 149-199.
+mapping analysis` (120); plus `../iqtree/references/tutorial.md` lines 282-341 and
+`../iqtree/references/faq.md` lines 56-62 and 149-199.
 
 ## Related skills
 

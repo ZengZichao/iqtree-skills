@@ -95,7 +95,7 @@ The letters `*` and `!` may found in alignments of protein and/or coding DNA seq
 
 ## Can I mix DNA and protein data in a partitioned analysis?
 
-Yes! You can specify this via a NEXUS partition file. In fact, you can mix any data types supported in IQ-TREE, including also codon, binary and morphological data. To do so, each data type should be stored in a separate alignment file (see also [Partitioned analysis with mixed data](Advanced-Tutorial.md#partitioned-analysis-with-mixed-data)). As an example, assuming `dna.phy` is a DNA alignment and and `prot.phy` is a protein alignment. Then a partition file mixing two types of data can be specified as follows:
+Yes! You can specify this via a NEXUS partition file. In fact, you can mix any data types supported in IQ-TREE, including also codon, binary and morphological data. To do so, each data type should be stored in a separate alignment file (see also [Partitioned analysis with mixed data](../../iqtree-complex-models/references/advanced-tutorial.md#partitioned-analysis-with-mixed-data)). As an example, assuming `dna.phy` is a DNA alignment and and `prot.phy` is a protein alignment. Then a partition file mixing two types of data can be specified as follows:
 
 ```
 #nexus
@@ -135,7 +135,7 @@ This test should be regarded as an _explorative tool_ which might help to nail d
 Furthermore, please keep in mind, this test is performed at the very beginning, where IQ-TREE does not know anything about the models yet. That means:
 
   * If you have partitioned (multi-gene) data, it might be more reasonable to test this separately for each partition in a partition analysis. Here, one might want to be able to decide whether some partitions should better be discarded if it is hard to find a composition representing the sequences in the partition. Or on the other hand if a sequence fails for many partitions and show very unexpected phylogenetic topologies, try without it.
-  * If you have (phylogenomic) protein data, you can also try several [protein mixture models](Substitution-Models.md#protein-mixture-models), which account for different amino-acid compositions along the sequences, for example, the `C10` to `C60` profile mixture models.
+  * If you have (phylogenomic) protein data, you can also try several [protein mixture models](../../iqtree-model-selection/references/substitution-models.md#protein-mixture-models), which account for different amino-acid compositions along the sequences, for example, the `C10` to `C60` profile mixture models.
   * Finally, it is recommended to always check the alignment (something one should always do anyway), especially if they have been collected and produced automatically.
 
 ## What is the good number of CPU cores to use?
@@ -148,7 +148,7 @@ If you want to restrict the number of CPU cores allocated by `-nt AUTO` use `-nt
 
 ## How do I save time for standard bootstrap?
 
-The standard bootstrap is rather slow and may take weeks/months for large data sets. One way to speed up is to use the multicore version. However, this only works well for long alignments (see [What is the good number of CPU cores to use?](Frequently-Asked-Questions.md#what-is-the-good-number-of-cpu-cores-to-use)). Another way is to use many machines or a computing cluster and split the computation among the machines. To illustrate, you want to perform 100 bootstrap replicates and have 5 PCs, each has 4 CPU cores. Then you can:
+The standard bootstrap is rather slow and may take weeks/months for large data sets. One way to speed up is to use the multicore version. However, this only works well for long alignments (see [What is the good number of CPU cores to use?](faq.md#what-is-the-good-number-of-cpu-cores-to-use)). Another way is to use many machines or a computing cluster and split the computation among the machines. To illustrate, you want to perform 100 bootstrap replicates and have 5 PCs, each has 4 CPU cores. Then you can:
 
   1. Perform 5 independent bootstrap runs (each with 20 replicates) on the 5 machines with 5 prefix outputs (such that output files are not overwritten). For example:
 

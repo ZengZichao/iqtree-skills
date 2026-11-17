@@ -97,7 +97,7 @@ or, e.g.,
 iqtree -nt 4 -s example.cf -m HKY+P
 ```
 
-if you use the multicore (OMP) version. `-s` specifies of the alignment file and `-m` the model (HKY substitution model with polymorphisms; PoMo), similar to the standard IQ-TREE usage. At the end of the run IQ-TREE writes the same output files as in the standard version (see [tutorial](Tutorial.md)).
+if you use the multicore (OMP) version. `-s` specifies of the alignment file and `-m` the model (HKY substitution model with polymorphisms; PoMo), similar to the standard IQ-TREE usage. At the end of the run IQ-TREE writes the same output files as in the standard version (see [tutorial](../../iqtree/references/tutorial.md)).
 
   * `example.cf.iqtree`: the main report file that is self-readable. You should look at this file to see the computational results. It also contains a textual representation of the final tree.
   * `example.cf.treefile`: the ML tree in NEWICK format, which can be visualized by any supported tree viewer programs like FigTree or iTOL.
@@ -207,11 +207,11 @@ To overcome the computational burden required by the non-parametric bootstrap, I
 iqtree -s example.cf -m HKY+P -bb 1000
 ```
 
-For a detailed description, please refer to the [bootstrap tutorial](Tutorial.md#assessing-branch-supports-with-ultrafast-bootstrap-approximation).
+For a detailed description, please refer to the [bootstrap tutorial](../../iqtree/references/tutorial.md#assessing-branch-supports-with-ultrafast-bootstrap-approximation).
 
 ## Interpretation of branch lengths
 
-PoMo estimates the branch length in number of mutations and frequency shifts (drift) per site. The number of drift events compared to the number of mutations becomes higher if the [virtual population size](Polymorphism-Aware-Models.md#virtual-population-size) is increased. To get the branch length measured in number of substitutions per site which enables a comparison to the branch length estimated by standard DNA substitution models, it has to be divided by `N^2`. PoMo also outputs the total tree length measured in number of substitutions per site in `example.cf.iqtree`. An example of the relevant section:
+PoMo estimates the branch length in number of mutations and frequency shifts (drift) per site. The number of drift events compared to the number of mutations becomes higher if the [virtual population size](polymorphism-aware-models.md#virtual-population-size) is increased. To get the branch length measured in number of substitutions per site which enables a comparison to the branch length estimated by standard DNA substitution models, it has to be divided by `N^2`. PoMo also outputs the total tree length measured in number of substitutions per site in `example.cf.iqtree`. An example of the relevant section:
 
 ```
 NOTE: The branch lengths of PoMo measure mutations and frequency shifts.

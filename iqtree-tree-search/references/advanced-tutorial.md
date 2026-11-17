@@ -27,7 +27,7 @@ _Last update: May 15, 2025, Contributors: Jana Trifinopoulos, Minh Bui, Qin Liu_
 
 Recommended for experienced users to explore more features.
 
-To get started, please read the [Beginner’s Tutorial](Tutorial.md) first if not done so yet.
+To get started, please read the [Beginner’s Tutorial](../../iqtree/references/tutorial.md) first if not done so yet.
 
 ## Partitioned analysis for multi-gene alignments
 
@@ -109,7 +109,7 @@ end;
 
 Here, `part1` and `part2` contain sub-alignments from alignment file `dna.phy`, whereas `part3` and `part4` are loaded from alignment file `prot.phy` and `part5` from `codon.phy`. The `:` is needed to separate the alignment file name and site specification. Note that, for convenience `*` in `part5` specification means that `part5` corresponds to the entire alignment `codon.phy`.
 
-> **TIP** : For `part5` the `CODON` keyword is specified so that IQ-TREE will apply a codon model. Moreover, this implicitly assumes the standard genetic code. If you want to use another genetic code, append `CODON` with the [code ID described here](Substitution-Models.md#codon-models)
+> **TIP** : For `part5` the `CODON` keyword is specified so that IQ-TREE will apply a codon model. Moreover, this implicitly assumes the standard genetic code. If you want to use another genetic code, append `CODON` with the [code ID described here](../../iqtree-model-selection/references/substitution-models.md#codon-models)
 
 Because the alignment file names are now specified in this NEXUS file, you can omit the `-s` option:
 
@@ -129,7 +129,7 @@ iqtree -s example.phy -p example.nex -m MFP+MERGE
 # for version 1.x change -p to -spp
 ```
 
-Note that this command considers the FreeRate heterogeneity model (see [model selection tutorial](Tutorial.md#choosing-the-right-substitution-model)). If you want to resemble PartitionFinder by just considering the invariable site and Gamma rate heterogeneity (thus saving computation times), then run:
+Note that this command considers the FreeRate heterogeneity model (see [model selection tutorial](../../iqtree/references/tutorial.md#choosing-the-right-substitution-model)). If you want to resemble PartitionFinder by just considering the invariable site and Gamma rate heterogeneity (thus saving computation times), then run:
 
 ```
 iqtree -s example.phy -p example.nex -m TESTMERGE
@@ -186,7 +186,7 @@ iqtree -s example.phy -p example.nex -B 1000 --sampling GENESITE
 
 ## Constrained tree search
 
-IQ-TREE supports constrained tree search via `-g` option, so that the resulting tree must obey a constraint tree topology. The constraint tree can be multifurcating and need not to contain all species. To illustrate, let’s return to the [first running example](Tutorial.md#first-running-example), where we want to force Human grouping with Seal whereas Cow with Whale. If you use the following constraint tree (NEWICK format):
+IQ-TREE supports constrained tree search via `-g` option, so that the resulting tree must obey a constraint tree topology. The constraint tree can be multifurcating and need not to contain all species. To illustrate, let’s return to the [first running example](../../iqtree/references/tutorial.md#first-running-example), where we want to force Human grouping with Seal whereas Cow with Whale. If you use the following constraint tree (NEWICK format):
 
 ```
 ((Human,Seal),(Cow,Whale));
@@ -246,7 +246,7 @@ The resulting part of the tree is then:
 
 which shows the desired effect.
 
-> **NOTE** : While this option helps to enforce the tree based on prior knowledge, it is advised to always perform tree topology tests to make sure that the resulting constrained tree is NOT significantly worse than an unconstrained tree! See [tree topology tests](Advanced-Tutorial.md#tree-topology-tests) and [testing constrained tree](Advanced-Tutorial.md#testing-constrained-tree) below for a guide how to check this.
+> **NOTE** : While this option helps to enforce the tree based on prior knowledge, it is advised to always perform tree topology tests to make sure that the resulting constrained tree is NOT significantly worse than an unconstrained tree! See [tree topology tests](advanced-tutorial.md#tree-topology-tests) and [testing constrained tree](advanced-tutorial.md#testing-constrained-tree) below for a guide how to check this.
 
 ## Tree topology tests
 
@@ -375,7 +375,7 @@ Minus signs denote significant exclusion.
 All tests performed 1000 resamplings using the RELL method.
 ```
 
-One sees that the AU test does not reject the first 3 trees (denoted by `+` sign below the `p-AU` column), whereas the last tree is significantly excluded (`-` sign). All other tests also agree with this. Therefore, groupings of `(Human,Mouse)` and `(Cow,Rat)` do not make sense. Whereas the phylogenetic position of `Seal` based on 3 first trees is still undecidable. This is in agreement with the SH-aLRT and ultrafast bootstrap supports [done in the Tutorial](Tutorial.md#assessing-branch-supports-with-single-branch-tests).
+One sees that the AU test does not reject the first 3 trees (denoted by `+` sign below the `p-AU` column), whereas the last tree is significantly excluded (`-` sign). All other tests also agree with this. Therefore, groupings of `(Human,Mouse)` and `(Cow,Rat)` do not make sense. Whereas the phylogenetic position of `Seal` based on 3 first trees is still undecidable. This is in agreement with the SH-aLRT and ultrafast bootstrap supports [done in the Tutorial](../../iqtree/references/tutorial.md#assessing-branch-supports-with-single-branch-tests).
 
 ## Consensus construction and bootstrap value assignment
 
@@ -449,7 +449,7 @@ Note that all model specifications above can be used in the partition model NEXU
 
 ## Inferring site-specific rates
 
-IQ-TREE allows to infer site-specific evolutionary rates if a [site-rate heterogeneity model such as Gamma or FreeRate](Substitution-Models.md#rate-heterogeneity-across-sites) is the best model. Here, IQ-TREE will estimate model parameters and then apply an empirical Bayesian approach to assign site-rates as the mean over rate categories, weighted by the posterior probability of the site falling into each category. This approach is provided in IQ-TREE because such empirical Bayesian approach was shown to be most accurate ([Mayrose et al., 2004](https://doi.org/10.1093/molbev/msh194)). An example run:
+IQ-TREE allows to infer site-specific evolutionary rates if a [site-rate heterogeneity model such as Gamma or FreeRate](../../iqtree-model-selection/references/substitution-models.md#rate-heterogeneity-across-sites) is the best model. Here, IQ-TREE will estimate model parameters and then apply an empirical Bayesian approach to assign site-rates as the mean over rate categories, weighted by the posterior probability of the site falling into each category. This approach is provided in IQ-TREE because such empirical Bayesian approach was shown to be most accurate ([Mayrose et al., 2004](https://doi.org/10.1093/molbev/msh194)). An example run:
 
 ```
 iqtree -s example.phy --rate
@@ -546,4 +546,4 @@ If you use the trimmed log-likelihood method in a publication, please cite:
 
 ## Where to go from here?
 
-See [Command Reference](Command-Reference.md) for a complete list of all options available in IQ-TREE.
+See [Command Reference](command-reference.md) for a complete list of all options available in IQ-TREE.

@@ -37,7 +37,7 @@ For discussions on the meaning of concordance factors please have a look at:
 
 First, you need to infer a reference tree (e.g. a species tree), on which the concordance factors will be annotated. The species tree can be reconstructed by a concatenation/supermatrix approach or a coalescent/reconciliation/supertree approach. Here, we will use the concatenation approach in IQ-TREE.
 
-As an example, you can apply an [edge-linked proportional partition model](Complex-Models.md) with ultrafast bootstrap (1000 replicates; for comparison with concordance factors):
+As an example, you can apply an [edge-linked proportional partition model](../../iqtree-complex-models/references/complex-models.md) with ultrafast bootstrap (1000 replicates; for comparison with concordance factors):
 
 ```
 iqtree3 -s ALN_FILE -p PARTITION_FILE --prefix concat -B 1000 -T AUTO

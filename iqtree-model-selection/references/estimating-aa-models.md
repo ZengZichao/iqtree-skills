@@ -18,7 +18,7 @@ headings: 5
 
 _Last update: May 26, 2026, Contributors: Hector Banos, Cuong Cao Dang, Minh Bui, Thomas Wong, Ryo Harada_
 
-Amino acid substitution models are a key component in phylogenetic analyses of protein sequences. Most, if not all, analyses use [empirical amino-acid models](Substitution-Models.md#protein-models), which were obtained from protein databases; but there has been no useful tool to estimate them for modern datasets at hand. Therefore, we introduced QMaker ([Minh et al., 2021](https://doi.org/10.1093/sysbio/syab010)) as a fast and convenient tool as part of IQ-TREE version 2 to infer a replacement matrix Q for any set of protein alignments.
+Amino acid substitution models are a key component in phylogenetic analyses of protein sequences. Most, if not all, analyses use [empirical amino-acid models](substitution-models.md#protein-models), which were obtained from protein databases; but there has been no useful tool to estimate them for modern datasets at hand. Therefore, we introduced QMaker ([Minh et al., 2021](https://doi.org/10.1093/sysbio/syab010)) as a fast and convenient tool as part of IQ-TREE version 2 to infer a replacement matrix Q for any set of protein alignments.
 
 If you use QMaker or new models (Q.pfam, Q.plant, Q.mammal, Q.bird, Q.insect, Q.yeast), please cite:
 
@@ -26,7 +26,7 @@ If you use QMaker or new models (Q.pfam, Q.plant, Q.mammal, Q.bird, Q.insect, Q.
 
 ## Estimating a model from a single concatenated alignment
 
-We first demonstrate the estimation of a reversible model for a clade-specific dataset. Please download and extract the [sample training data](../assets/files/plant_10loci.zip). This example data was subsampled from a plant dataset ([Ran et al., 2018](https://doi.org/10.1098/rspb.2018.1012)). There are two files in the downloaded folder:
+We first demonstrate the estimation of a reversible model for a clade-specific dataset. Please download and extract the [sample training data](../../assets/files/plant_10loci.zip). This example data was subsampled from a plant dataset ([Ran et al., 2018](https://doi.org/10.1098/rspb.2018.1012)). There are two files in the downloaded folder:
 
   * `alignment.nex` contains the alignment in NEXUS format.
   * `train.nex` contains the training partitions in NEXUS format.
@@ -95,7 +95,7 @@ Ala Arg Asn Asp Cys Gln Glu Gly His Ile Leu Lys Met Phe Pro Ser Thr Trp Tyr Val
 
 ## Estimating a model from a folder of alignments
 
-We will now estimate a reversible model from a folder of alignments. Please first download the file [plant_10alignments.zip](../assets/files/plant_10alignments.zip). There is a sub-folder named `train_plant` in the downloaded folder. We use `-S` option instead of `-s` and `-p` options to allow each alignment having a separate tree. This -S option is typically used with a folder of alignments. The three commands are:
+We will now estimate a reversible model from a folder of alignments. Please first download the file [plant_10alignments.zip](../../assets/files/plant_10alignments.zip). There is a sub-folder named `train_plant` in the downloaded folder. We use `-S` option instead of `-s` and `-p` options to allow each alignment having a separate tree. This -S option is typically used with a folder of alignments. The three commands are:
 
 ```
 # step 1: infer a  separate tree for each alignment with reversible models as initial models
@@ -156,7 +156,7 @@ The resulting `NQ.plant` matrix may now look like:
 0.076646 0.049413 0.038372 0.049451 0.010780 0.037824 0.063761 0.052468 0.015186 0.065770 0.104298 0.072672 0.019435 0.049968 0.035179 0.078294 0.045874 0.013490 0.033377 0.087742
 ```
 
-> HINT: To assess the statistical support of the root position with bootstraping (-B 1000 option), users can use [this tutorial](Rootstrap.md).
+> HINT: To assess the statistical support of the root position with bootstraping (-B 1000 option), users can use [this tutorial](../../iqtree-rooting/references/rootstrap.md).
 
 To estimate a non-reversible model from a folder of alignments:
 
@@ -173,7 +173,7 @@ grep -A 22 "can be used as input for IQ-TREE" train_plant.NONREV.iqtree | tail -
 
 ## Estimating linked exchangeabilities
 
-Starting with version 2.3.5, IQ-TREE allows users to estimate linked exchangeabilities under [profile mixture models](Substitution-Models.md#protein-mixture-models), called GTRpmix ([Banos et al., 2024](https://doi.org/10.1093/molbev/msae174)).
+Starting with version 2.3.5, IQ-TREE allows users to estimate linked exchangeabilities under [profile mixture models](substitution-models.md#protein-mixture-models), called GTRpmix ([Banos et al., 2024](https://doi.org/10.1093/molbev/msae174)).
 
 To start with, we show an example:
 
@@ -181,7 +181,7 @@ To start with, we show an example:
 iqtree3 -s <alignment> -m GTR20+C60+G4 --link-exchange -te  <guide_tree> -me 0.99
 ```
 
-Here, IQ-TREE applies a (freely-estimated) 20x20 rate matrix `GTR20` with the [profile mixture model](Substitution-Models.md#protein-mixture-models) `C60` (other model such as C10 can also be used) and Gamma rate heterogeneity across sites. The option `--link-exchange` tells IQ-TREE to link GTR20 rates across all 60 mixture classes: without this option IQ-TREE will estimate 60 GTR20 matrices!
+Here, IQ-TREE applies a (freely-estimated) 20x20 rate matrix `GTR20` with the [profile mixture model](substitution-models.md#protein-mixture-models) `C60` (other model such as C10 can also be used) and Gamma rate heterogeneity across sites. The option `--link-exchange` tells IQ-TREE to link GTR20 rates across all 60 mixture classes: without this option IQ-TREE will estimate 60 GTR20 matrices!
 
 The other options are not mandatory but meant to speed up this process:
 
@@ -195,11 +195,11 @@ This command will produce an output file with suffix `.GTRPMIX.nex`. This file c
 iqtree3 -s <alignment> -mdef <.GTRPMIX.nex file> -m GTRPMIX+C60+G4
 ```
 
-The optimizer in IQ-TREE by default initializes exchangeability rates to be all equal, which are the least biased but may make the subsequent optimization quite slow. If users have a good guess of the rate values, the option `--init-exchange` can be used. For example, `--init-exchange LG` will intialize the exchangeability to that of the LG model before optimization. Choosing good starting values can make estimation considerably faster. Apart from LG, users can specify any matrix, including those defined by the `-mdef` option with a [NEXUS model file](Complex-Models.md#nexus-model-file). Another use of this option is to _test the robustness_ of the optimizer with different starting points.
+The optimizer in IQ-TREE by default initializes exchangeability rates to be all equal, which are the least biased but may make the subsequent optimization quite slow. If users have a good guess of the rate values, the option `--init-exchange` can be used. For example, `--init-exchange LG` will intialize the exchangeability to that of the LG model before optimization. Choosing good starting values can make estimation considerably faster. Apart from LG, users can specify any matrix, including those defined by the `-mdef` option with a [NEXUS model file](../../iqtree-complex-models/references/complex-models.md#nexus-model-file). Another use of this option is to _test the robustness_ of the optimizer with different starting points.
 
 Note that the user can estimate exchangeabilities jointly with weights of the profiles, branch lengths, and rates. This can be very time-consuming. If the goal is to optimize exchangeabilities, one can fix the other parameters to reasonable estimates (for eg. fixing branch lengths and rates has been shown to perform adequately for the estimation of exchangeabilities).
 
-Because these routines can be computationally expensive, two exchangeability matrices estimated from large concatenated phylogenomic-supermatrices under the C60 profile mixture model are provided to be used for phylogenetic analyses. One, called Eukaryotic Linked Mixture (ELM), is designed for phylogenetic analysis of proteins encoded by nuclear genomes of eukaryotes, and the other, Eukaryotic and Archeal Linked mixture (EAL), for reconstructing relationships between eukaryotes and Archaea, see [Protein models](Substitution-Models.md#protein-models).
+Because these routines can be computationally expensive, two exchangeability matrices estimated from large concatenated phylogenomic-supermatrices under the C60 profile mixture model are provided to be used for phylogenetic analyses. One, called Eukaryotic Linked Mixture (ELM), is designed for phylogenetic analysis of proteins encoded by nuclear genomes of eukaryotes, and the other, Eukaryotic and Archeal Linked mixture (EAL), for reconstructing relationships between eukaryotes and Archaea, see [Protein models](substitution-models.md#protein-models).
 
 If you use this routine in a publication please cite:
 

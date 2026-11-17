@@ -26,8 +26,8 @@ This guide provides the outgroup approach and another rooting approach using _no
 
 We first demonstrate the outgroup approach to root the Bovidae family of five sampled species (Yak, Cow, Goat, Sheep and Tibetan antelope) using two outgroup species (Pig and Whale). Please download:
 
-  * An [input DNA alignment file](../assets/files/bovidae_outgroup.phy) for these 7 species.
-  * An [input partition file](../assets/files/bovidae.nex) that defines 52 genes in this alignment. This is a subset of the mammal dataset ([Wu et al., 2018](https://doi.org/10.1016/j.dib.2018.04.094)).
+  * An [input DNA alignment file](../../assets/files/bovidae_outgroup.phy) for these 7 species.
+  * An [input partition file](../../assets/files/bovidae.nex) that defines 52 genes in this alignment. This is a subset of the mammal dataset ([Wu et al., 2018](https://doi.org/10.1016/j.dib.2018.04.094)).
 
 > Choosing a “good” outgroup is an entire topic on its own. In generally, the outgroup must contain taxa that do not belong to the ingroup but are evolutionarily close enough to the ingroup taxa.
 
@@ -74,7 +74,7 @@ Finally, if you want you can also perform a non-partition analysis by removing t
 
 We will now infer a rooted tree using non-reversible models. Please download:
 
-  * An [input DNA alignment file](../assets/files/bovidae.phy) for 5 ingroup species (Yak, Cow, Goat, Sheep and Tibetan antelope). This is a sub-alignment of the alignment above. We can re-use the same partition file.
+  * An [input DNA alignment file](../../assets/files/bovidae.phy) for 5 ingroup species (Yak, Cow, Goat, Sheep and Tibetan antelope). This is a sub-alignment of the alignment above. We can re-use the same partition file.
 
 To speed up the analysis, we will perform two steps. The first step is the same as the run above to infer an unrooted tree using reversible models:
 
@@ -82,7 +82,7 @@ To speed up the analysis, we will perform two steps. The first step is the same 
 iqtree3 -s bovidae.phy -p bovidae.nex -B 1000 -T AUTO --prefix rev_dna
 ```
 
-This run will also write the best partitioning scheme to `rev_dna.best_scheme.nex` file. In the second step, we will re-use this best scheme but replace the substitution model with the most general non-reversible DNA model, UNREST or 12.12 (see [this doc](Substitution-Models.md#lie-markov-models)) to obtain a rooted tree:
+This run will also write the best partitioning scheme to `rev_dna.best_scheme.nex` file. In the second step, we will re-use this best scheme but replace the substitution model with the most general non-reversible DNA model, UNREST or 12.12 (see [this doc](substitution-models.md#lie-markov-models)) to obtain a rooted tree:
 
 ```
 iqtree3 -s bovidae.phy -p rev_dna.best_scheme.nex --model-joint UNREST -B 1000 -T AUTO --prefix nonrev_dna
@@ -113,7 +113,7 @@ Numbers in parentheses are  ultrafast bootstrap support (%)
 
 This run will write an additional tree file `nonrev_dna.rootstrap.nex` with _rootstrap_ support values (see box below for definition) annotated on every branch of the tree. If you open this file in FigTree it may look like this (click on “Branch Labels” and choose `rootstrap` for “Display” as shown in the figure):
 
-![Rooted tree with rootstrap supports for DNA](../assets/images/nonrev_dna.png)
+![Rooted tree with rootstrap supports for DNA](../../assets/images/nonrev_dna.png)
 
 It shows that the tree might be rooted in the branch leading to `Cow` with a rootstrap support of 72%, which is rather low. The 2nd best branch separating Cow and Yak from the rest has a rootstrap support of 17.9%. So with this dataset the DNA model cannot reliably tell where the root position is, but at least provides some candidates.
 
@@ -150,13 +150,13 @@ Numbers in parentheses are  ultrafast bootstrap support (%)
 
 Interestingly, the amino-acid model suggests a different root position compared with the DNA model. But this position agrees with the outgroup rooting approach. And the tree `nonrev_aa.rootstrap.nex` with rootstrap supports look like:
 
-![Rooted tree with rootstrap supports using amino-acid nonreversible model](../assets/images/nonrev_aa.png)
+![Rooted tree with rootstrap supports using amino-acid nonreversible model](../../assets/images/nonrev_aa.png)
 
 That means, the branch separating Yak and Cow from the rest receives a very high rootstrap support of 99.9%. Therefore, the amino-acid model seems to have a much higher power to detect the root, compared with the DNA model.
 
 ## Testing root positions
 
-The rootstrap introduced above is one way to measure our confidence in the root placement, but it is not a statistical test. Alternatively, we can apply the [tree topology tests](Advanced-Tutorial.md#tree-topology-tests) to compare the log-likelihoods of the trees being rooted on every branch of the ML tree. IQ-TREE v2.1.3 provides a convenient option `--root-test` that will re-root the tree on every branch and perform the test for you. So you can run:
+The rootstrap introduced above is one way to measure our confidence in the root placement, but it is not a statistical test. Alternatively, we can apply the [tree topology tests](../../iqtree-complex-models/references/advanced-tutorial.md#tree-topology-tests) to compare the log-likelihoods of the trees being rooted on every branch of the ML tree. IQ-TREE v2.1.3 provides a convenient option `--root-test` that will re-root the tree on every branch and perform the test for you. So you can run:
 
 ```
 iqtree3 -s bovidae.phy -p rev_aa.best_scheme.nex --model-joint NONREV -st NT2AA --root-test -zb 1000 -au -te nonrev_aa.treefile --prefix nonrev_aa_test

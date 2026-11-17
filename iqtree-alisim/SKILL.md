@@ -424,7 +424,7 @@ grep -n "^## " references/alisim.md
 
 ## Resources
 
-- `references/alisim.md` — the complete AliSim manual (~6.1k words): every feature section plus the authoritative "All AliSim options" table at line 692. Load the relevant section with the grep recipes above; always cross-check an option there before using it.
+- `references/alisim.md` — the complete AliSim manual (~6.1k words): every feature section plus the authoritative "All AliSim options" table at line 690. Load the relevant section with the grep recipes above; always cross-check an option there before using it.
 - `references/recipe-simulating-multi-tree.md` — recipe for alignments assembled from multiple trees: two-locus example, the AMAS concatenation workflow, and a bash loop for arbitrary numbers of loci/lengths. Note its own header points to the simpler native "Topology-unlinked partition model" (`-Q`).
 
 ## Related skills
