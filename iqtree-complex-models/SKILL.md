@@ -115,7 +115,7 @@ iqtree -s example.phy -p example.nex -m TESTMERGEONLY          # PartitionFinder
 iqtree -s example.phy -p example.nex -m MF+MERGE -rcluster 10  # relaxed clustering, top 10%
 ```
 
-Speed-ups for large numbers of partitions: `-rcluster <pct>` (relaxed hierarchical clustering, examines only the top `%` of merging schemes), `-rclusterf <pct>` (the faster PartitionFinder2 variant, v1.6+), `-rcluster-max <n>` (absolute cap on partition pairs considered per round; default the larger of 1000 and 10x the partition count). A merge run also writes the winning scheme as `<prefix>.best_scheme.nex`, which can be fed straight back as a `-p` input on later runs — see `iqtree-rooting` for that two-step pattern. On v1.x, `...MERGE...` always searched an edge-unlinked scheme first regardless of `-spp`; v1.6+ respects the linkage.
+Speed-ups for large numbers of partitions: `-rcluster <pct>` (relaxed hierarchical clustering, examines only the top `%` of merging schemes), `-rclusterf <pct>` (the faster PartitionFinder2 variant, v1.6+), `-rcluster-max <n>` (absolute cap on partition pairs considered in the merging phase; default the larger of 1000 and 10x the partition count). A merge run also writes the winning scheme as `<prefix>.best_scheme.nex`, which can be fed straight back as a `-p` input on later runs — see `iqtree-rooting` for that two-step pattern. On v1.x, `...MERGE...` always searched an edge-unlinked scheme first regardless of `-spp`; v1.6+ respects the linkage.
 
 ## Mixture models
 
@@ -153,7 +153,7 @@ Whole rate matrices can also be declared (`model LG4M1 = <PAML lower triangle> .
 | `EX2`, `EX3`, `EHO`, `EX_EHO`, `UL2`, `UL3` | Structure-aware multi-matrix models (exposed/buried, extended/helix/other) |
 | `LG4M`, `LG4X` | Four-matrix LG fusions (`LG4X` uses FreeRate) |
 | `CF4` | Five-profile mixture |
-| `G.pfam+C60`, `EAL+C60`, `ELM+C60` | Linked exchangeabilities (GTRpmix) tuned for deep eukaryote/Archaea questions |
+| `G.pfam+C60`, `EAL+C60`, `ELM+C60` | Linked exchangeabilities (GTRpmix): `G.pfam` general; `ELM` for nuclear-encoded eukaryote proteins; `EAL` for eukaryote–Archaea relationships |
 | `S10pfamC60`, `S28pfamC59`, `S28pfamC60`, `S10pfamC10`, `S20pfamC20`, `S30pfamC30` | GTRspmix: several exchangeability matrices, each linked to a cluster of profiles |
 
 Combine an explicit matrix with a profile set: `LG+C20`, `LG+C20+F` (adds the empirical profile as a 21st class), `JTT+CF4+G`, `S28pfamC60+G`; replace Gamma by FreeRate with `LG+C20+R4`.

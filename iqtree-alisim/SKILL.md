@@ -15,7 +15,7 @@ Invoke it through IQ-TREE:
 iqtree3 --alisim <OUTPUT_PREFIX> -m <MODEL> -t <TREEFILE>
 ```
 
-Default behaviour: writes `OUTPUT_PREFIX.phy` (PHYLIP), **1000 sites**, one alignment, DNA/JC if no `-m` given.
+Default behaviour: writes `OUTPUT_PREFIX.phy` (PHYLIP), **1000 sites**, one alignment. (The JC-on-DNA fallback when no `-m` is given is documented only for random-tree runs, `-t RANDOM{...}`.)
 
 ## Command skeleton
 
@@ -79,7 +79,7 @@ The following spellings appear nowhere in `references/alisim.md` or `references/
 | Intent | Verified way to do it |
 | --- | --- |
 | Save the simulated tree | AliSim writes a tree file next to the alignment — recipes consume it as `sequences.treefile` (placement recipe in `../iqtree-concordance-factor/references/recipe-phylogenetic-placement.md`, line 137) and `-t concat.treefile` is the usual inference output of the same name. **Partially verified**: no `--write-tree` style switch exists in these references, so confirm with `ls <PREFIX>*` after each run |
-| Ultrametric / clock-like tree | Generate with a Birth-Death random tree `-t "RANDOM{bd{0.1/0.05}/1000}"` |
+| Ultrametric / clock-like tree | **Not documented in these references** — no clock/ultrametric option exists here, and `-t RANDOM{bd{...}}` draws branch lengths from an exponential distribution (`-rlen`), so those trees are not ultrametric. |
 | Fix total tree depth | Scale every branch with `--branch-scale <SCALE>` |
 | Per-partition tree lengths | Append `{tree_length}` to each partition in the `charpartition` statement, used with `-p` |
 | Non-overlapping taxon sets per locus | One NEWICK per line in the tree file + `-Q` |
@@ -335,7 +335,7 @@ iqtree3 --alisim example_mutations -t tree_example.nwk -m "JC" --mutation mutati
 iqtree3 --alisim large_alignment -t tree.nwk --length 1000000 -m "JC" -nt 4
 iqtree3 --alisim large -t tree.nwk --length 1000000 -m "JC" -nt 4 --openmp-alg EM --keep-seq-order
 mpirun -np 10 iqtree3-mpi --alisim many_alignment -t tree.nwk -m "JC" --num-alignments 100
-mpirun -np 10 --map-by node:PE=4 --rank-by core iqtree3-mpi --alisim many_large -t tree.nwk --length 1000000 -m "JC" --num-alignments 100 -nt 4
+mpirun -np 10 --map-by node:PE=4 --rank-by core iqtree3-mpi --alisim many_large_alignment -t tree.nwk --length 1000000 -m "JC" --num-alignments 100 -nt 4
 ```
 
 - OpenMP algorithms: `IM` (default) or `EM`. `EM` writes sequences in arbitrary order (`--keep-seq-order` restores preorder at a runtime cost) and can skip merging with `--no-merge`, producing K sub-alignments of L/K sites.

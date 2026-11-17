@@ -100,7 +100,7 @@ Empirical exchangeability matrices, grouped by intended data source (`-msub` acc
 | nuclear (general) | LG, WAG, JTT, JTTDCMut, Dayhoff, DCMut, VT, PMB, Blosum62*, Q.pfam, Q.mammal, Q.bird, Q.insect, Q.plant, Q.yeast, ELM, EAL, G.pfam |
 | mitochondrial | mtREV, mtMAM, mtART, mtZOA, mtMet, mtVer, mtInv |
 | chloroplast | cpREV |
-| viral | HIVb, HIVw, FLU, rtREV |
+| viral | FLAVI, HIVb, HIVw, FLU, rtREV |
 | none / general | Poisson (equal rates and frequencies) |
 | non-reversible | NQ.pfam, NQ.mammal, NQ.bird, NQ.insect, NQ.plant, NQ.yeast |
 | parameter-rich | GTR20 (190 rates — unstable without very long alignments) |

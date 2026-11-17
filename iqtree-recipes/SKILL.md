@@ -32,7 +32,7 @@ General notes: `iqtree` and `iqtree3` both appear in the recipes (the pages were
 iqtree -s sequences.fa -g existing_tree.nex
 
 # A2. Optional global re-optimisation, using the placement result as starting tree
-iqtree -s sequences.fa -t seqs_added.treefile -pre re_optimised
+iqtree -s sequences.fa -t sequences.treefile -pre reoptimised
 ```
 
 Reproduce the whole worked example from scratch:
@@ -83,11 +83,11 @@ For very large data (many tens of thousands of sequences) prefer **UShER & matOp
 
 ### Outputs
 
-`seqs_added.treefile` (placed tree), `seqs_added.iqtree`, `seqs_added.log`; `re_optimised.*` for the unconstrained pass. Inspect the printed ASCII tree: the new tips should sit inside the unchanged reference structure after A1, and may move after A2.
+`sequences.treefile` (placed tree; the recipe says this is the tree output of A1 — in the from-scratch script above the same step is re-run with `-pre seqs_added`, producing `seqs_added.*`), plus the matching `.iqtree`/`.log`; `reoptimised.*` (or `re_optimised.*` in the from-scratch script) for the unconstrained pass. Inspect the printed ASCII tree: the new tips should sit inside the unchanged reference structure after A1, and may move after A2.
 
 ### Interpretation
 
-Compare `seqs_added.treefile` and `re_optimised.treefile`: if re-optimisation changes reference branches, your earlier constrained placement was fighting the data and the added sequences deserve a full re-inference. Report placements from A1 whenever the published reference topology must be preserved.
+Compare the placed and re-optimised trees (`sequences.treefile` vs `reoptimised.treefile`; `seqs_added.treefile` vs `re_optimised.treefile` in the from-scratch script): if re-optimisation changes reference branches, your earlier constrained placement was fighting the data and the added sequences deserve a full re-inference. Report placements from A1 whenever the published reference topology must be preserved.
 
 ---
 
@@ -253,7 +253,7 @@ Option meanings: `-S` = separate ModelFinder + tree search per alignment/partiti
 
 `concordance_vectors.csv` key columns: `ID`; `gene_psi1..4` (%) and `gene_psi1_N..psi4_N` (counts) plus `gene_N`; `site_psi1..4`, `site_psi*_N`, `site_N`; `quartet_psi1..3`, `quartet_psi*_N`, `quartet_N`; `quartet_psi1_pp..psi3_pp` (ASTRAL posterior probabilities); `length_subs_per_site`; `length_coalescent`. Mapping back to IQ-TREE fields: `gene_psi1` = gCF, `gene_psi2`/`psi3` = larger/smaller of gDF1 & gDF2, `gene_psi4` = gDFP, counts from `gCF_N`, `gDF1_N`, `gDF2_N`, `gDFP_N`, `gN`; site equivalents come from `scfl.cf.stat` (`sCF`, `sDF1`, `sDF2`, `sCF_N`, `sN`); quartet values come from the ASTRAL `Label` column (`q1`,`q2`,`q3`,`f1`,`f2`,`f3`,`pp1`,`pp2`,`pp3`,`EN`). Site Ψ4/`site_psi4_N` are zero by assumption.
 
-Plotting: open `gcf.cf.tree` (or `id_gcf_scf_qcf.nex`) in DendroScope/iTOL and load the strings as **edge labels**, then re-root and zoom freely; visualise vectors as stacked bars per branch, always showing the counts (`*_N`) alongside percentages; the recipe's tables add 95% CIs from 1000 bootstraps of the count data, which is what you need to compare values *between* branches. Counts for sites and quartets are not always integers, and rounded bootstrap CIs are unreliable for very low counts.
+Plotting: open `gcf.cf.tree` (or `id_gcf_scf_qcf.nex`) in Dendroscope and load the strings as **edge labels**, then re-root and zoom freely; visualise vectors as stacked bars per branch, showing the counts (`*_N`) alongside percentages; the recipe's tables add 95% CIs from 1000 bootstraps of the count data, which is what you need to compare values *between* branches. Counts for sites and quartets are not always integers, and rounded bootstrap CIs are unreliable for very low counts.
 
 ### Interpretation
 

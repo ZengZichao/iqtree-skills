@@ -54,7 +54,7 @@ Option meanings used above (all verified in the references):
 | --- | --- |
 | `-s` | Input alignment (PHYLIP, FASTA, NEXUS, CLUSTAL, MSF). |
 | `-p` | Partition file, edge-proportional partition model (partitions may have different evolutionary speeds). Legacy spelling: `-spp`. |
-| `-m TEST` / `-m MFP` | Model selection (`MFP` = like `-m MF` — extended candidate set incl. FreeRate — but immediately followed by tree reconstruction with the best-fit model). |
+| `-m TESTNEW` / `-m MFP` | Model selection (`MFP` = like `-m MF` — extended candidate set incl. FreeRate — but immediately followed by tree reconstruction with the best-fit model). |
 | `--model-joint <MODEL>` | Use one linked instance of `<MODEL>` across **all** partitions. Needed to avoid over-parameterisation: `UNREST` has 12 parameters, `NONREV` has 379. |
 | `-B 1000` / `-bb 1000` | Ultrafast bootstrap, 1000 replicates (`-bb` is the legacy spelling). Rootstrap needs bootstrap replicates to count root positions. |
 | `-T AUTO` / `-nt AUTO` | Auto-detect the best number of CPU cores. |
@@ -224,7 +224,7 @@ Tip from the docs: `--root-test -zb 1000 -au` can be added to the rootstrap comm
 
 ```bash
 cd "$(dirname "$0")"   # or: cd /path/to/iqtree-rooting
-grep -n -A 45 "^### Lie Markov models" references/substitution-models.md
+grep -n -A 45 "^## Lie Markov models" references/substitution-models.md
 grep -n -A 8  "^All Lie Markov models can have" references/substitution-models.md
 grep -n -A 3  "^| Model | Rev? | Freq" references/substitution-models.md
 grep -n -A 12 "^## Rate heterogeneity across sites" references/substitution-models.md

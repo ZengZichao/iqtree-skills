@@ -76,7 +76,7 @@ expose that machinery only through these options (`Command-Reference.md:492-500`
 | `-nstep` | Iteration interval at which UFBoot convergence is checked. DEFAULT: every 100 iterations |
 | `-nm` | Maximum number of iterations to stop. DEFAULT: 1000 |
 | `-beps` | Small epsilon to break ties in RELL evaluation for bootstrap trees. DEFAULT: 0.5 |
-| `-bnni` | Hill-climbing NNI optimisation of each bootstrap tree on its own bootstrap alignment; recommended under severe model violation; costs ~2x time but reduces overestimated supports (since IQ-TREE 1.6) |
+| `-bnni` | Additional NNI optimisation of the UFBoot trees based directly on the bootstrap alignments; recommended under severe model violation; costs ~2x time but reduces overestimated supports (since IQ-TREE 1.6) |
 | `-bsam` / `--sampling` | Resampling strategy for partitions: sites within partitions (default), `GENE` (resample partitions), `GENESITE` (partitions then sites) |
 | `-wbt` | Write the bootstrap trees to the `.ufboot` file. DEFAULT: OFF |
 | `-wbtl` | Like `-wbt` but bootstrap trees written **with branch lengths**. DEFAULT: OFF |

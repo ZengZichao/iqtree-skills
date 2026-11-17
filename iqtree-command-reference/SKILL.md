@@ -1,6 +1,6 @@
 ---
 name: iqtree-command-reference
-description: Assemble, validate and interpret full IQ-TREE command lines flag by flag - the complete option catalogue from Command-Reference (general options -s/-st/-T/-nt/-mem/--prefix/-seed/-o, checkpointing -redo/-cptime/-keep-ident, likelihood mapping -lmap, model selection -m TEST/MF/MFP/TESTMERGE, rate heterogeneity +I/+G/+R, partitions -q/-p/-Q, tree search -g/-n/-nstop/-pers, pathogen -pathogen, UFBoot -B/-bb/-bnni/-bcor/-beps, standard bootstrap -b/-bc/-bo, branch tests -alrt/-abayes/-lbp, ASR -asr, topology tests -z/-zb/-zw/-au, consensus -con/-minsup/-bi/-sup, RF distances -rf, random trees -r/-ru/-rcat/-rbal/-rcsg, misc -alninfo/-fconst/-me/-blmin/-blmax). Also maps IQ-TREE 1.x legacy spellings (-nt, -pre, -bb, -spp, -sp, -wsr) to their 2.x/3.x names, explains every output file (.iqtree .treefile .log .ckp.gz .contree .splits.nex .ufboot .state .rate), and ships three helper scripts (build_command.py, check_env.py, parse_results.py).
+description: Assemble, validate and interpret full IQ-TREE command lines flag by flag - the complete option catalogue from Command-Reference (general options -s/-st/-T/-nt/-mem/--prefix/-seed/-o, checkpointing -redo/-cptime/-keep-ident, likelihood mapping -lmap, model selection -m TEST/MF/MFP/TESTMERGE, rate heterogeneity +I/+G/+R, partitions -q/-p/-Q, tree search -g/-n/-nstop/-pers, pathogen -pathogen, UFBoot -B/-bb/-bnni/-bcor/-beps, standard bootstrap -b/-bc/-bo, branch tests -alrt/-abayes/-lbp, ASR -asr, topology tests -z/-zb/-zw/-au, consensus -con/-minsup/-bi/-sup, RF distances -rf, random trees -r/-ru/-rcat/-rbal/-rcsg, misc -alninfo/-fconst/-me/-blmin/-blmax). Also maps IQ-TREE 1.x legacy spellings (-nt, -pre, -bb, -spp, -sp, -wsr) to their 2.x/3.x names, and ships three helper scripts (build_command.py, check_env.py, parse_results.py) that build commands and interpret the output files (.iqtree .treefile .log .ckp.gz .contree .splits.nex .ufboot .state .rate).
 ---
 
 # IQ-TREE Command Reference
@@ -41,14 +41,14 @@ Unchanged in both: `-s`, `-m`, `-st`, `-seed`, `-o`, `-t`, `-te`, `-g`, `-alrt`,
 | Tree search parameters | `-n` `-nstop` `-pers` `-sprrad` `-allnni` `-fast` `-djc` `-g` constraint, `-ninit` `-ntop` `-nbest` |
 | Tree search for pathogen data | `--pathogen` `--pathogen-force`, `-T` tuning note |
 | Ultrafast bootstrap | `-B/-bb` `-bcor` `-beps` `-bnni` `-bsam` `-nm` `-nstep` `-wbt` `-wbtl` |
-| Nonparametric bootstrap | `-b` `-bc` `-bo` `-wbt` |
+| Nonparametric bootstrap | `-b` `-bc` `-bo` |
 | Single branch tests | `-alrt` `-abayes` `-lbp` `-czb` |
 | Ancestral reconstruction | `-asr` `-asr-min`, `.state` file |
 | Tree topology tests | `-z` `-zb` `-zw` `-au` `-te`, `.iqtree` test table |
-| Consensus tree | `-con` `-minsup` `-bi` `-sup` `-suptag` `-scale` |
+| Consensus tree | `-con` `-minsup` `-bi` `-sup` `-suptag` `-scale` `-prec` |
 | Robinson-Foulds distance | `-rf` `-rf_all` `-rf_adj` |
 | Random trees | `-r` `-ru` `-rcat` `-rbal` `-rcsg` `-rlen` |
-| Miscellaneous | `-alninfo` `-blfix` `-blmin` `-blmax` `-me` `-wpl` `-wt` `-fconst` `-prec` |
+| Miscellaneous | `-alninfo` `-blfix` `-blmin` `-blmax` `-me` `-wpl` `-wt` `-fconst` |
 
 `references/lsd2-help.md` is the verbatim `lsd2 -h` output (native LSD2 flags, used through IQ-TREE's `--date-options "..."`); see the `iqtree-dating` skill for the wrapper-to-native mapping. `references/analyzing-big-data.md` is the official "Analyzing big data" page, which is still a TODO stub on the site - practical big-data advice lives in `iqtree-recipes` and the pathogen section of the command reference.
 

@@ -82,7 +82,7 @@ IQ-TREE auto-detects the sequence type; override only when detection is wrong or
 | Codon model | `iqtree -s cds.phy -st CODON` | **Always required** — otherwise DNA models are applied. Alignment length must be divisible by 3 |
 | Alternative genetic code | `iqtree -s cds.phy -st CODON5` | `CODON{1,2,3,4,5,6,9,10,11,12,13,14,16,21,22,23,24,25}`; IDs follow the NCBI table |
 | Binary (0/1) | `iqtree -s bin.phy -st BIN` | Alphabet size auto-detected |
-| Morphological | `iqtree -s morph.phy -st MORPH` | States `0`-`9` and `A`-`V`; pair with `-m MK+ASC` when constant sites are absent |
+| Morphological | `iqtree -s morph.phy -st MORPH` | States `0`-`9` and `A`-`Z` (for states 10-31); pair with `-m MK+ASC` when constant sites are absent |
 | Translate DNA to AA | `iqtree -s cds.phy -st NT2AA` | Analysis then runs on the translation; `-st NT2AA5` for a non-standard code |
 
 Under codon models branch lengths are substitutions per **codon** site (~3x longer than under DNA models). SNP data with no constant sites need ascertainment correction: `-m GTR+ASC`, or `-m MFP+ASC` to keep it inside model selection.

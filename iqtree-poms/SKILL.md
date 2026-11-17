@@ -178,7 +178,7 @@ Rules of thumb:
 ## Identical and polymorphic sequences
 
 - Polymorphic sites are the point of the method: within a population column the counts are split across bases (e.g. `0,1,4,0`), and the site-frequency information across those columns is what PoMo exploits. Monomorphic columns (`0,0,5,0`) are kept and contribute fixation information.
-- IQ-TREE's general handling of duplicate sequences applies: by default identical sequences are removed for the analysis and added back at the end (among a group of identical sequences the first two are kept, later ones are ignored but re-added, so that bootstrap support for such a group is not forced to 100%). Force retention with `-keep-ident`. The de-duplicated alignment is written with the `.uniqueseq.phy` suffix.
+- IQ-TREE's general handling of duplicate sequences applies (documented in the FAQ, mirrored in `iqtree/references/faq.md`): by default identical sequences are removed for the analysis and added back at the end (among a group of identical sequences the first two are kept, later ones are ignored but re-added, so that bootstrap support for such a group is not forced to 100%). Force retention with `-keep-ident`. The de-duplicated alignment is written with the `.uniqueseq.phy` suffix.
 - Practical consequence for PoMo inputs: collapse redundant chromosomes into **counts** rather than passing dozens of identical FASTA records — that is exactly why the counts format exists.
 
 ## Pitfalls

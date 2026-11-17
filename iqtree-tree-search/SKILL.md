@@ -61,7 +61,7 @@ Two documented caveats (AT:220-250):
 - On an **unrooted** tree a constraint like `((Human,Seal),(Cow,Whale));` only forces the split — Human and Seal need not be monophyletic. To force them as a clade, put the extra taxa inside the constraint, e.g. `((Human,Seal),(Cow,Whale),Mouse);`.
 - Always check a constrained result against the unconstrained one with topology tests (next section); AT calls this "advised" because the constrained tree may be significantly worse.
 
-Placement variant: give an incomplete tree with `-t`/`-g` and let the search fill in the rest. With CMAPLE this is explicit: `--tree-search FAST` = "placement only, no SPR moves" (CR:436, 481).
+Placement variant: give an incomplete tree with `-t` and let the search fill in the rest. With CMAPLE this is explicit: `--tree-search FAST` = "placement only, no SPR moves" (CR:436, 481).
 
 ## Tree topology tests (`-z`, `-zb`, `-zw`, `-au`)
 

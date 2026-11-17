@@ -1,6 +1,6 @@
 ---
 name: iqtree-dating
-description: Build time-calibrated phylogenies in IQ-TREE with either Bayesian MCMCtree (IQ2MC) or Least-Squares Dating LSD2. Use for molecular dating, time trees, tip dates, sampling dates from pathogen outbreaks (HIV, influenza, SARS-CoV-2), fossil/ancestral-node calibrations, relaxed clocks, gradient/Hessian generation for MCMCtree, and confidence intervals on node dates. Triggers include --date, --dating mcmctree, .mcmctree.ctl, .hessian, .timetree.nex/.nwk, mcmctree.ctl, FigTree date display, --date-ci, --date-outlier, and a dated tree as output.
+description: Build time-calibrated phylogenies in IQ-TREE with either Bayesian MCMCtree (IQ2MC) or Least-Squares Dating LSD2. Use for molecular dating, time trees, tip dates, sampling dates from pathogen outbreaks (e.g. SARS-CoV-2), fossil/ancestral-node calibrations, relaxed clocks, gradient/Hessian generation for MCMCtree, and confidence intervals on node dates. Triggers include --date, --dating mcmctree, .mcmctree.ctl, .hessian, .timetree.nex/.nwk, mcmctree.ctl, FigTree date display, --date-ci, --date-outlier, and a dated tree as output.
 ---
 
 # IQ-TREE Molecular Dating
@@ -43,7 +43,7 @@ TIME TREE RECONSTRUCTION:
   --date-options ".."  Extra options passing directly to LSD2
 ```
 
-### Case A1 — tip dates (the pathogen scenario: HIV, influenza, SARS-CoV-2)
+### Case A1 — tip dates (the virus-dataset scenario of the docs, e.g. SARS-CoV-2)
 
 Prepare a date file: one line per taxon, name and date separated by spaces/tabs. You do **not** need dates for every tip.
 

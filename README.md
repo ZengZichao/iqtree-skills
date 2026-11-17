@@ -27,28 +27,41 @@ Agent 读取 `SKILL.md` 获得该主题的工作指引，再按需加载 `refere
 
 ```
 .
-├── iqtree/SKILL.md          # 每个技能一份入口指南（YAML frontmatter: name + description）
+├── iqtree/
+│   ├── SKILL.md             # 每个技能一份入口指南（YAML frontmatter: name + description）
 │   └── references/*.md      # 官方文档逐字镜像（保留原 frontmatter，含 source_url 溯源）
+├── iqtree-alisim/ … iqtree-tree-search/   # 其余 10 个技能，结构相同
 ├── iqtree-command-reference/
+│   ├── SKILL.md
+│   ├── references/
 │   └── scripts/             # build_command.py / check_env.py / parse_results.py（Python 3，无第三方依赖）
-└── assets/
-    ├── images/              # 官方文档图片（14 个）
-    └── files/               # 文档引用的示例数据（bovidae、plant、astral 等，12 个）
+├── assets/
+│   ├── images/              # 官方文档图片（14 个）
+│   └── files/               # 文档引用的示例数据（bovidae、plant、astral 等，12 个）
+├── README.md / LICENSE / .gitignore
 ```
 
 ## 使用方法
 
-- **装载技能**：把所需技能文件夹复制到你的 Agent 技能目录（例如 Claude Code 的
-  `.claude/skills/<skill-name>/`）。技能之间通过相对路径 `../<skill>/references/...`
-  互相引用，建议整仓一起使用。
+- **装载技能（推荐：整仓一起用）**：把整个仓库克隆或复制到你的 Agent 技能目录，例如
+  Claude Code 的 `~/.claude/skills/`（支持递归扫描子目录的加载器）或 Qoder 的技能目录：
+  `git clone <repo> ~/.claude/skills/iqtree-skills/`。此时技能位于
+  `~/.claude/skills/iqtree-skills/iqtree/` 等。注意：引用是 **相对技能文件夹上一层** 计算的，
+  例如 `iqtree/references/quickstart.md` 中的 `../../assets/files/bovidae.phy` 解析为
+  `~/.claude/skills/iqtree-skills/assets/files/bovidae.phy`（整仓安装时存在）。
+- **只取单个技能**：把某个技能文件夹单独复制到技能目录（如 `~/.claude/skills/iqtree/`）时，
+  其中的 `../../assets/...` 和 `../../<skill>/references/...` 会解析到技能目录的上一层，
+  那里通常没有 `assets/` 和兄弟技能，**这些链接会失效**；请同时复制 `assets/` 到技能目录
+  的上一层、或一并复制所需的其他技能文件夹。
 - **只取所需**：`references/` 是整页镜像，各 SKILL.md 的 "grep recipes" 一节给出按标题
   精确抽取片段的命令，避免整页加载。
 - **辅助脚本**（`iqtree-command-reference/scripts/`，依赖仅 Python 3 标准库）：
 
 ```bash
-python3 scripts/check_env.py                 # 找到 iqtree/iqtree2/iqtree3 二进制并推荐 -T/-mem
-python3 scripts/build_command.py --alignment aln.phy -T 4 --bootstrap 1000 --alrt 1000
-python3 scripts/parse_results.py --prefix run1
+cd iqtree-command-reference/scripts
+python3 check_env.py                         # 找到 iqtree/iqtree2/iqtree3 二进制并推荐 -T/-mem
+python3 build_command.py --alignment aln.phy -T 4 --bootstrap 1000 --alrt 1000
+python3 parse_results.py --prefix run1
 # 三个脚本均支持 --self-test；build_command.py 会校验对齐文件存在，
 # 文件尚未生成时可加 --allow-missing 先产出命令行
 ```
@@ -58,5 +71,6 @@ python3 scripts/parse_results.py --prefix run1
 - `references/` 下的文档镜像与 `assets/` 下的图片、示例数据来自官方文档站
   [iqtree.github.io/doc](https://iqtree.github.io/doc/)，版权归 IQ-TREE 作者所有，
   此处仅作本地镜像以便离线检索；每个文件 frontmatter 中的 `source_url` 记录了原始出处。
-- `SKILL.md` 指南、脚本与仓库组织采用 [MIT 许可](LICENSE)。
+- `SKILL.md` 指南、`iqtree-command-reference/scripts/` 下的脚本与仓库组织为仓库作者原创，
+  采用 [MIT 许可](LICENSE)；该 MIT 许可**不覆盖**上述镜像文档与示例数据。
 - 引用 IQ-TREE 时请使用官方首页列出的文献（见 `iqtree/references/home.md`）。
