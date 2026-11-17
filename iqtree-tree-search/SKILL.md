@@ -53,10 +53,10 @@ Ancestral-state reconstruction along a user tree instead of the ML tree: `-asr` 
 
 ```
 iqtree -s data.phy -m TEST -g constraint.tree          # CR:425
-iqtree -s example.phy -m TIM2+I+G -g example.constr1 --prefix example.constr1   # AT:227
+iqtree -s example.phy -m TIM2+I+G -g example.constr1 --prefix example.constr1   # AT:228
 ```
 
-Two documented caveats (AT:202-218):
+Two documented caveats (AT:220-250):
 
 - On an **unrooted** tree a constraint like `((Human,Seal),(Cow,Whale));` only forces the split — Human and Seal need not be monophyletic. To force them as a clade, put the extra taxa inside the constraint, e.g. `((Human,Seal),(Cow,Whale),Mouse);`.
 - Always check a constrained result against the unconstrained one with topology tests (next section); AT calls this "advised" because the constrained tree may be significantly worse.
@@ -144,7 +144,7 @@ iqtree -s example.phy -m JC+G -asr
 
 | Option | Meaning | Output |
 | --- | --- | --- |
-| `-wsr` (CR:364) / `--rate` (AT:455) | Empirical-Bayes per-site rate = posterior-weighted mean over rate categories; requires a Gamma/FreeRate-type heterogeneity model | `<aln>.rate` with columns `Site`, `Rate`, `Category`, `Categorized_rate` (category 1 = slow … 4 = fast) |
+| `-wsr` (CR:364) / `--rate` (AT:456) | Empirical-Bayes per-site rate = posterior-weighted mean over rate categories; requires a Gamma/FreeRate-type heterogeneity model | `<aln>.rate` with columns `Site`, `Rate`, `Category`, `Categorized_rate` (category 1 = slow … 4 = fast) |
 | `--mlrate` (IQ-TREE 3, AT:493) | Per-site rates estimated by **maximum likelihood** | `<aln>.mlrate` with columns `Site`, `Rate` |
 | `-wspr` / `-wslr` | Site posterior probabilities / site log-likelihoods per rate category | `.siteprob` / `.sitelh` |
 

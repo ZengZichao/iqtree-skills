@@ -170,7 +170,7 @@ Supports appear in three places:
 3. `.contree` (consensus with supports, branch lengths optimised on the original alignment),
    `.splits.nex` (percentage for **all** splits, including conflicting ones that never reach the
    consensus — open in SplitsTree), and `.splits` (same data, star-dot format, needs `-wsplits`)
-   `.splits` (same data, star-dot format, needs `-wsplits`) (`Tutorial.md:297-299`).
+   (`Tutorial.md:297-299`).
 
 ### Interpretation thresholds actually given in the docs
 

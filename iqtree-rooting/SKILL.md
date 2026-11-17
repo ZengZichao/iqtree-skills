@@ -1,6 +1,6 @@
 ---
 name: iqtree-rooting
-description: "Root, re-root and measure root support on IQ-TREE phylogenies. Use when a tree must be rooted without an outgroup, when asking for \"rootstrap\" or root support values, when running non-reversible substitution models (UNREST/12.12 and other Lie Markov models with RY/WS/MK/SS symmetries, NONREV / NONREV+FO amino-acid models, NQ.* non-reversible matrices), when interpreting the report lines \"Tree is UNROOTED although outgroup taxon ... is drawn at root\" versus \"Tree is ROOTED at virtual root __root__\" in .treefile/.iqtree, when using -o, --model-joint, --root-test, -B/-bb bootstrap, -st NT2AA, .best_scheme.nex or .rootstrap.nex files, or when testing which branch a root should sit on with an AU/KH/SH test (.roottest.csv)."
+description: "Root, re-root and measure root support on IQ-TREE phylogenies. Use when a tree must be rooted without an outgroup, when asking for \"rootstrap\" or root support values, when running non-reversible substitution models (UNREST/12.12 and other Lie Markov models with RY/WS/MK symmetries, NONREV / NONREV+FO amino-acid models, NQ.* non-reversible matrices), when interpreting the report lines \"Tree is UNROOTED although outgroup taxon ... is drawn at root\" versus \"Tree is ROOTED at virtual root __root__\" in .treefile/.iqtree, when using -o, --model-joint, --root-test, -B/-bb bootstrap, -st NT2AA, .best_scheme.nex or .rootstrap.nex files, or when testing which branch a root should sit on with an AU/KH/SH test (.roottest.csv)."
 ---
 
 # IQ-TREE: Rooting Trees and Rootstrap Support
@@ -54,7 +54,7 @@ Option meanings used above (all verified in the references):
 | --- | --- |
 | `-s` | Input alignment (PHYLIP, FASTA, NEXUS, CLUSTAL, MSF). |
 | `-p` | Partition file, edge-proportional partition model (partitions may have different evolutionary speeds). Legacy spelling: `-spp`. |
-| `-m TEST` / `-m MFP` | Model selection (`MFP` = ModelFinder Plus, additionally tests FreeRate). |
+| `-m TEST` / `-m MFP` | Model selection (`MFP` = like `-m MF` — extended candidate set incl. FreeRate — but immediately followed by tree reconstruction with the best-fit model). |
 | `--model-joint <MODEL>` | Use one linked instance of `<MODEL>` across **all** partitions. Needed to avoid over-parameterisation: `UNREST` has 12 parameters, `NONREV` has 379. |
 | `-B 1000` / `-bb 1000` | Ultrafast bootstrap, 1000 replicates (`-bb` is the legacy spelling). Rootstrap needs bootstrap replicates to count root positions. |
 | `-T AUTO` / `-nt AUTO` | Auto-detect the best number of CPU cores. |
@@ -106,7 +106,6 @@ Every Lie Markov model can take a symmetry prefix:
 | `RY` | purine-pyrimidine pairing (default) |
 | `WS` | weak-strong pairing |
 | `MK` | aMino-Keto pairing |
-| `SS` | strand-symmetric (used as the model-selection keyword `+LMSS`, see below) |
 
 Include Lie Markov models in automatic model selection (v1.6+) by appending a keyword to `-m` (table reproduced in `../iqtree-recipes/references/command-reference.md`, section "Automatic model selection"):
 
@@ -125,7 +124,7 @@ Include Lie Markov models in automatic model selection (v1.6+) by appending a ke
 | `NONREV` | Most general non-reversible amino-acid model, 379 parameters. Link it across partitions with `--model-joint NONREV`. |
 | `NONREV+FO` | Same, with ML-optimised amino-acid frequencies (`+FO` = optimised, letter O not zero). Used when estimating a new non-reversible matrix (nQMaker workflow). |
 | `NQ.pfam`, `NQ.mammal`, `NQ.bird`, `NQ.insect`, `NQ.plant`, `NQ.yeast` | Pre-existing **non-reversible** empirical Q matrices (Dang et al., 2022). Usable directly with `-m`. |
-| `LG+F+G4`, `LG+F+R2`, `GTR20+FO` | Reversible reference models — estimate these first (step 1) and reroot with a non-reversible model (step 2). |
+| `GTR20+FO` | Reversible GTR20 amino-acid model with ML-optimised frequencies — the documented step-2 `--model-joint` model when estimating a new non-reversible matrix; step 1 builds a guide tree with a reversible model such as `LG` (`../iqtree-model-selection/references/estimating-aa-models.md`). |
 
 Frequency modifiers: `+F` empirical, `+FO` ML-optimised, `+FQ` equal.
 

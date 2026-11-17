@@ -84,7 +84,7 @@ Compose the model as `<DNA-model>+P[<polymorphism>][+<sampling>][+<freq>][+G<k>]
 
 | Piece | Values | Meaning / default |
 | --- | --- | --- |
-| DNA base model | `JC`, `F81`, `K2P`, `HKY`, `TN`, `SYM`, `GTR`, ... | Underlying nucleotide substitution model. Example: `-m GTR+P`. Rate parameters can be fixed, e.g. `HKY{6.0}` sets the transition/transversion ratio to 6.0. |
+| DNA base model | `HKY`, `GTR`, ... (the two the PoMo page names; full list follows the standard DNA models — confirm with `iqtree -h`) | Underlying nucleotide substitution model. Example: `-m GTR+P`. Rate parameters can be fixed, e.g. `HKY{6.0}` sets the transition/transversion ratio to 6.0. |
 | `+P` | bare | PoMo with the level of polymorphism **inferred** during likelihood maximisation (default behaviour for population data). |
 | `+P{EMP}` | `EMP` | Fix the level of polymorphism to the observed empirical value in the data. |
 | `+P{<theta>}` | e.g. `+P{0.0025}` | Set the level of polymorphism by hand. This quantity is Watterson's theta, also called `4Nu`. |
