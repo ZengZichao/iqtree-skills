@@ -78,7 +78,7 @@ The following spellings appear nowhere in `references/alisim.md` or `references/
 
 | Intent | Verified way to do it |
 | --- | --- |
-| Save the simulated tree | AliSim writes a tree file next to the alignment — recipes consume it as `sequences.treefile` (placement recipe, line 139) and `-t concat.treefile` is the usual inference output of the same name. **Partially verified**: no `--write-tree` style switch exists in these references, so confirm with `ls <PREFIX>*` after each run |
+| Save the simulated tree | AliSim writes a tree file next to the alignment — recipes consume it as `sequences.treefile` (placement recipe in `../iqtree-concordance-factor/references/recipe-phylogenetic-placement.md`, line 137) and `-t concat.treefile` is the usual inference output of the same name. **Partially verified**: no `--write-tree` style switch exists in these references, so confirm with `ls <PREFIX>*` after each run |
 | Ultrametric / clock-like tree | Generate with a Birth-Death random tree `-t "RANDOM{bd{0.1/0.05}/1000}"` |
 | Fix total tree depth | Scale every branch with `--branch-scale <SCALE>` |
 | Per-partition tree lengths | Append `{tree_length}` to each partition in the `charpartition` statement, used with `-p` |
@@ -424,7 +424,7 @@ grep -n "^## " references/alisim.md
 
 ## Resources
 
-- `references/alisim.md` — the complete AliSim manual (~6.1k words): every feature section plus the authoritative "All AliSim options" table at line 690. Load the relevant section with the greps in "Loading only what you need" above; always cross-check an option there before using it.
+- `references/alisim.md` — the complete AliSim manual (~6.1k words): every feature section plus the authoritative "All AliSim options" section at line 690 (table from line 694). Load the relevant section with the greps in "Loading only what you need" above; always cross-check an option there before using it.
 - `references/recipe-simulating-multi-tree.md` — recipe for alignments assembled from multiple trees: two-locus example, the AMAS concatenation workflow, and a bash loop for arbitrary numbers of loci/lengths. Note its own header points to the simpler native "Topology-unlinked partition model" (`-Q`).
 
 ## Related skills

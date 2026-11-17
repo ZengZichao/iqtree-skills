@@ -27,7 +27,7 @@ Convert a substitution-scale ML tree into a time tree using one of two engines b
 ## Part A — LSD2 least-squares dating
 
 ### Required version note
-The docs carry a disclaimer: download **version 2.0.6 or later** to get newer options such as `--date-ci`; the feature is flagged as new and possibly buggy.
+The docs carry a disclaimer: download **version 2.0.6 or later** to get newer options such as `--date-ci`; the CI method itself is documented as unpublished.
 
 ### The IQ-TREE LSD2 front-end (full list from the docs)
 

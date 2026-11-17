@@ -93,7 +93,7 @@ Lie Markov models (v1.6+, many non-reversible, consistent under concatenation un
 
 ## Protein models
 
-Empirical exchangeability matrices, grouped by intended data source (`-msub` filters on exactly these labels):
+Empirical exchangeability matrices, grouped by intended data source (`-msub` accepts the nuclear / mitochondrial / chloroplast / viral groupings marked below):
 
 | Region | Models |
 | --- | --- |

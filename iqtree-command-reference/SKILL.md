@@ -22,7 +22,7 @@ The docs repeat one pattern: *"for version 1.x change X to Y"*. The two styles m
 | Edge-proportional partitions | `-p PART_FILE` | `-spp PART_FILE` |
 | Edge-unlinked partitions | `-Q PART_FILE` | `-sp PART_FILE` |
 | Write per-site rates | `--rate` | `-wsr` |
-| Binary name | `iqtree2` / `iqtree3` | `iqtree` (or `iqtree-omp`, `iqtree.mpich`) |
+| Binary name | `iqtree2` / `iqtree3` | `iqtree` (or `iqtree-omp`; MPI builds: `iqtree-mpi`) |
 
 Unchanged in both: `-s`, `-m`, `-st`, `-seed`, `-o`, `-t`, `-te`, `-g`, `-alrt`, `-q`, `-redo`, `-mem`, `-n`, `-nstop`, `-pers`, `-bnni`.
 
@@ -32,7 +32,7 @@ Unchanged in both: `-s`, `-m`, `-st`, `-seed`, `-o`, `-t`, `-te`, `-g`, `-alrt`,
 | --- | --- |
 | General options | `-s` `-st` `-T/-nt` `-ntmax` `-mem` `--prefix/-pre` `-seed` `-o` `-t` `-te` `-redo` `-keep-ident` `-v` `-quiet` |
 | Checkpointing | `.ckp.gz` auto-resume, `-redo` to discard, `-cptime`, `.model.gz` (>=1.6) vs `.model` (<=1.5) |
-| Likelihood mapping | `-lmap N`, `-lmclust`, `.lmap.svg/.eps`, `.lmap.quad` |
+| Likelihood mapping | `-lmap N`, `-lmclust`, `.lmap.svg/.eps` (plots), `.lmap.quartetlh` (quartet log-likelihoods via `-wql`) |
 | Automatic model selection | `-m TEST/TESTONLY/MF/MFP`, `TESTMERGE/MF+MERGE`, `-mset` `-msub` `-madd` `-mdef` `-mrate` `-cmin` `-cmax` `-merit` `-mtree` |
 | Specifying substitution models | `-m JC/GTR/HKY/LG/WAG/MF...`, mixture `MIX{...}`, `-fconst`, `+ASC`, `+I/+G/+R` |
 | Rate heterogeneity | `+I`, `+G[k]`, `+R[k]`, `+I+G`, `--opt-gamma-inv` |
@@ -40,7 +40,7 @@ Unchanged in both: `-s`, `-m`, `-st`, `-seed`, `-o`, `-t`, `-te`, `-g`, `-alrt`,
 | Site-specific frequency model | `+FQ`, `-mwopt` |
 | Tree search parameters | `-n` `-nstop` `-pers` `-sprrad` `-allnni` `-fast` `-djc` `-g` constraint, `-ninit` `-ntop` `-nbest` |
 | Tree search for pathogen data | `--pathogen` `--pathogen-force`, `-T` tuning note |
-| Ultrafast bootstrap | `-B/-bb` `-bcor` `-beps` `-bnni` `-bsam` `-nm` `-nstep` `-wbt` `-wbtl` `-uwboot` |
+| Ultrafast bootstrap | `-B/-bb` `-bcor` `-beps` `-bnni` `-bsam` `-nm` `-nstep` `-wbt` `-wbtl` |
 | Nonparametric bootstrap | `-b` `-bc` `-bo` `-wbt` |
 | Single branch tests | `-alrt` `-abayes` `-lbp` `-czb` |
 | Ancestral reconstruction | `-asr` `-asr-min`, `.state` file |
@@ -110,8 +110,8 @@ grep -n -A 25 "^## Tree topology tests" references/command-reference.md
 grep -n -- "-alrt" references/command-reference.md
 grep -n -- "-mem" references/command-reference.md
 
-# Legacy-to-modern rename sentences scattered through the docs
-grep -rn "for version 1.x" references/
+# Legacy-to-modern rename sentences live in the sibling mirrors
+grep -rn "for version 1.x" ../iqtree/references/ ../iqtree-complex-models/references/
 
 # Native LSD2 flags (tab-indented in lsd2 -h output)
 grep -n "^	-" references/lsd2-help.md

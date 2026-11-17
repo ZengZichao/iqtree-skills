@@ -155,7 +155,7 @@ For small/medium jobs without local installation: <http://iqtree.cibiv.univie.ac
 
 ## Compiling from source
 
-Requirements: C++ compiler (GCC >= 4.8, Clang, MSVC or Intel), CMake >= 2.8.10, Boost, Eigen3 (>=1.6), OpenMP. Clang binaries run ~5-10% faster than GCC.
+Requirements: C++ compiler (GCC >= 4.8, Clang, MSVC or Intel), CMake >= 2.8.10, Boost, Eigen3 (required for IQ-TREE >= 1.6), OpenMP. Clang binaries run ~5-10% faster than GCC.
 
 ```bash
 git clone --recursive https://github.com/iqtree/iqtree3.git
