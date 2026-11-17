@@ -435,5 +435,5 @@ Section-to-task map:
 - `references/concordance-vector.md` — Recipe C: environment setup, `-S` gene trees, ASTRAL `-q`/`-t 2` annotation, the three chained IQ-TREE commands, every `.cf.stat`/`.treefile` output, the complete `concordance_vectors.csv` column dictionary and CI methodology.
 - `references/Simulating-concatenated-alignments-with-multiple-trees.md` — Recipe D: two-tree AMAS workflow, the generalised bash loop, and the author's caveats on random-tree distinctness and error checking. Note the page itself redirects readers to "Topology-unlinked partition model" in the AliSim docs (Recipe D3 above).
 - `references/command-reference.md` — 34-heading IQ-TREE option reference (use the greps above). Load only the section you need; never read all ~7.4k words.
-- `references/index.md` — the recipes index page listing the four official recipes (22 lines; safe to read whole).
+- `references/index.md` — the recipes index page listing the four official recipes (20 lines; safe to read whole).
 - `../iqtree-alisim/references/alisim.md` (sibling skill folder, read-only) — AliSim option table and the topology-unlinked partition model section used in Recipe D3.
