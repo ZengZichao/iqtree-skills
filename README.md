@@ -49,7 +49,8 @@ Agent 读取 `SKILL.md` 获得该主题的工作指引，再按需加载 `refere
 python3 scripts/check_env.py                 # 找到 iqtree/iqtree2/iqtree3 二进制并推荐 -T/-mem
 python3 scripts/build_command.py --alignment aln.phy -T 4 --bootstrap 1000 --alrt 1000
 python3 scripts/parse_results.py --prefix run1
-# 三个脚本均支持 --self-test
+# 三个脚本均支持 --self-test；build_command.py 会校验对齐文件存在，
+# 文件尚未生成时可加 --allow-missing 先产出命令行
 ```
 
 ## 数据来源与许可
